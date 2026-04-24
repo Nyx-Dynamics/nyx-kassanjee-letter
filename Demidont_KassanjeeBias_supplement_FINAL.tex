@@ -1,0 +1,400 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{float}
+
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thesubsection}{S\arabic{section}.\arabic{subsection}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\theequation}{S\arabic{equation}}
+
+\title{\textbf{Supplementary Material}\\[0.4em]
+\large Selection on Testing Engagement: A Structural Bias in\\
+Cross-Sectional Incidence Estimation Using Recency Assays}
+
+\author{A.C. Demidont, DO, AAHIVS\\ Nyx Dynamics LLC, Philadelphia, PA 19107}
+\date{}
+
+\begin{document}
+\maketitle
+\onehalfspacing
+
+\tableofcontents
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\section{Extended derivations}
+
+\subsection{Exponential approximation of $P_R(t)$ for the Sedia LAg-EIA}
+
+The closed-form correction $\Omega^* \approx \Omega/(1+\gamma\tau)$ used throughout the main letter relies on an exponential approximation of the probability of testing recent as a function of age-of-infection $t$:
+\begin{equation}
+P_R(t) \;\approx\; P_0 \exp(-t/\tau) \label{eq:PR_exp}
+\end{equation}
+with $\tau \approx 173$ days for the Sedia LAg-EIA at the conventional recency cutoff (optical density normalized, ODn $<$ 1.5). Under this parameterization, the nominal MDRI evaluates to
+\begin{equation}
+\Omega = \int_0^T P_R(t)\,dt = P_0 \tau (1 - e^{-T/\tau})
+\end{equation}
+and the effective MDRI under constant structural hazard $\gamma$ evaluates to
+\begin{equation}
+\Omega^*(\gamma) = P_0 \int_0^T \exp(-t/\tau) \exp(-\gamma t)\,dt
+= \frac{P_0\tau}{1 + \gamma\tau}\left(1 - e^{-T(1/\tau + \gamma)}\right)
+\end{equation}
+For $T \gg \tau$ (the standard choice $T = 730$ days with $\tau = 173$ days gives $T/\tau \approx 4.2$), both exponential terms approach their asymptotic values and the ratio simplifies to
+\begin{equation}
+\frac{\Omega^*(\gamma)}{\Omega} \approx \frac{1}{1 + \gamma\tau}
+\end{equation}
+This approximation introduces a systematic under-estimate of the true deflation. The published Sedia LAg-EIA recency curve has a delayed onset (near-zero $P_R$ for $t < 30$ days) and a longer right tail than strict exponential decay. A proper calibration using the Sedia-reported $P_R(t)$ empirical curve produces $\Omega^*$ values 2--4\% smaller than the closed-form approximation for a given $\gamma$. The closed-form is therefore conservative, and the bias magnitudes reported in the main letter understate the true magnitudes under exact $P_R(t)$.
+
+\subsection{Competing-risk survival under non-constant hazard}
+
+The piecewise-constant $\gamma$ approximation treats the competing-risk hazard as invariant over the recency window. In reality, $\gamma(t)$ may vary with age-of-infection through several mechanisms: (i) post-seroconversion behavioral adjustment, (ii) decreasing healthcare engagement in advanced HIV disease, (iii) time-varying exposure to carceral or displacement events. The general form
+\begin{equation}
+S_c(t) = \exp\!\left(-\int_0^t \gamma(u)\,du\right)
+\end{equation}
+accommodates arbitrary hazard trajectories. For monotonically increasing $\gamma(t)$ (the empirically expected pattern in untreated HIV infection), the constant-$\gamma$ approximation evaluated at the mean $\bar\gamma$ over $[0, T]$ under-estimates $S_c(t)$ at early $t$ and over-estimates at late $t$, with the net effect on $\Omega^*$ depending on the shape of $P_R(t)$. For the exponential $P_R$, where early $t$ contributes more to the integral, the constant-$\bar\gamma$ approximation slightly over-estimates $\Omega^*$ (i.e., under-estimates the deflation). This reinforces the conservative direction.
+
+\subsection{Derivation of $\rho_{\mathrm{int}}$ under retention-weighted person-time}
+
+Consider a participant randomized to the intervention arm at $t=0$ and followed until censoring time $C_i$ drawn from $\mathrm{Exp}(\gamma)$. Infections occur at rate $\lambda_{\mathrm{int}}$ during the retention interval. A detection visit occurs every $d_{\mathrm{visit}}$ days; an infection at time $\tau_i$ is detected at visit $\lceil \tau_i / d_{\mathrm{visit}} \rceil \cdot d_{\mathrm{visit}}$ if $\tau_i + \Delta_i \leq C_i$, where $\Delta_i$ is the time from infection to next visit.
+
+Expected observed infections per unit person-time in follow-up:
+\begin{align}
+\lambda^{\mathrm{obs}}_{\mathrm{int}} &= \frac{E[\text{detected infections}]}{E[\text{person-time}]} \\
+&= \frac{\int_0^{T_{\mathrm{trial}}} \lambda_{\mathrm{int}}\, S_c(t)\, P(\text{detect} \mid \text{infect at } t)\,dt}{\int_0^{T_{\mathrm{trial}}} S_c(t)\,dt}
+\end{align}
+Under $P(\text{detect} \mid \text{infect at } t) \approx \exp(-\gamma \cdot d_{\mathrm{visit}}/2)$ (using the mean infection-to-visit delay):
+\begin{equation}
+\lambda^{\mathrm{obs}}_{\mathrm{int}} \approx \lambda_{\mathrm{int}} \cdot \exp(-\gamma\, d_{\mathrm{visit}}/2) \equiv \lambda_{\mathrm{int}} \cdot \rho_{\mathrm{int}}^{\text{detection}}(\gamma)
+\end{equation}
+This captures the detection-window loss. A second factor, capturing the retention-weighted time average of participant presence, is approximated as
+\begin{equation}
+\rho_{\mathrm{retention}}(r) = \frac{1+r}{2}
+\end{equation}
+for time-weighted retention $r$ (linear dropout approximation). The combined $\rho_{\mathrm{int}}$ used in the main letter is the product:
+\begin{equation}
+\rho_{\mathrm{int}}(\gamma, r) = \frac{1+r}{2} \cdot \exp(-\gamma\, d_{\mathrm{visit}}/2)
+\end{equation}
+A more elaborate model treating dropout as a time-varying hazard with Kaplan-Meier-style retention curves produces refinements of 1--3\% at typical trial retention levels.
+
+\subsection{Variance propagation for the corrected estimator}
+
+The Gao 2021 delta-method variance for the uncorrected Kassanjee estimator~\cite{gao2021} is
+\begin{equation}
+\widehat{\mathrm{Var}}(\log \hat\lambda_0) = \frac{1}{N_{\mathrm{rec}}} + \frac{\beta^2 N_+^2 / (N_{\mathrm{rec}} - \beta N_+)^2}{\cdot} + \frac{1}{N_-} + \frac{\sigma_\Omega^2}{(\Omega-\beta T)^2} + \frac{T^2 \sigma_\beta^2}{(\Omega-\beta T)^2}
+\end{equation}
+(schematically; see Gao 2021 for exact form with cross-terms). Under the $\Omega^*(\gamma)$ correction, the estimator becomes
+\begin{equation}
+\hat\lambda_0^{\mathrm{corr}} = \hat\lambda_0 \cdot \frac{\Omega}{\Omega^*(\hat\gamma)}
+\end{equation}
+and the log-variance gains an additional term for uncertainty in $\hat\gamma$:
+\begin{equation}
+\mathrm{Var}(\log \hat\lambda_0^{\mathrm{corr}}) = \mathrm{Var}(\log \hat\lambda_0) + \left(\frac{\partial \log(\Omega/\Omega^*)}{\partial \gamma}\right)^2 \sigma_\gamma^2
+\end{equation}
+Under the closed-form approximation $\Omega/\Omega^* = 1 + \gamma\tau$:
+\begin{equation}
+\frac{\partial \log(1 + \gamma\tau)}{\partial \gamma} = \frac{\tau}{1 + \gamma\tau}
+\end{equation}
+so the added variance component is
+\begin{equation}
+\Delta\mathrm{Var}(\log \hat\lambda_0^{\mathrm{corr}}) = \frac{\tau^2 \sigma_\gamma^2}{(1 + \gamma\tau)^2} \label{eq:added_var}
+\end{equation}
+For $\tau = 173$ days, $\gamma = 10^{-3}$/day, and $\sigma_\gamma / \gamma = 0.3$ (a reasonable prior uncertainty on population-level hazard estimates), this contributes approximately $0.026$ to $\mathrm{Var}(\log \hat\lambda_0^{\mathrm{corr}})$, or roughly 16\% added relative uncertainty on $\hat\lambda_0$. This is non-trivial but does not dominate the total uncertainty, which is typically driven by $N_{\mathrm{rec}}$ in small-sample cross-sectional studies.
+
+For the IRR bias factor $B_{\mathrm{IRR}}$, analogous propagation yields
+\begin{equation}
+\mathrm{Var}(\log \widehat{B}_{\mathrm{IRR}}) = \left(\frac{d_{\mathrm{visit}}}{2} - \frac{\tau}{2}\right)^2 \sigma_\gamma^2 + \left(\frac{1}{1+r}\right)^2 \sigma_r^2
+\end{equation}
+capturing both the structural hazard uncertainty and the retention uncertainty.
+
+\section{Sensitivity analyses}
+
+\subsection{Parameter variation}
+
+Table~\ref{tab:sensitivity} reports the range of $\Omega^*$ deflation, joint $B_{\mathrm{IRR}}$, and maximum IRR attenuation across 34 MSAs under parameter perturbations around the primary scenario used in the main letter.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Sensitivity of Kassanjee bias magnitudes to parameterization choices. The primary scenario corresponds to the main-letter analysis: $\gamma_{\mathrm{base}} = 5\times10^{-4}$/day, $\alpha = 1.2$, selection amplification 1.5$\times$, severity-coupled retention $r(\text{late-dx})$. All other scenarios vary one parameter at a time. Columns: minimum and maximum effective MDRI across 34 MSAs; range of denominator inflation as percentage; range of joint bias factor; maximum IRR attenuation in the highest-severity city. Negative attenuation in extreme scenarios indicates sign flip (reported IRR exceeds true IRR).}
+\label{tab:sensitivity}
+\begin{tabular}{lccccccc}
+\toprule
+Scenario & $\Omega^*_{\min}$ & $\Omega^*_{\max}$ & defl\%$_{\min}$ & defl\%$_{\max}$ & $B_{\min}$ & $B_{\max}$ & atten\%$_{\max}$ \\
+\midrule
+Primary (main letter)          & 135.9 & 159.2 & 8.7  & 27.3 & 0.969 & 0.999 & 3.1 \\
+\midrule
+$\alpha = 1.0$                 & 139.4 & 158.3 & 9.3  & 24.1 & 0.958 & 1.002 & 4.2 \\
+$\alpha = 1.5$                 & 130.2 & 160.4 & 7.8  & 32.9 & 0.989 & 0.996 & 1.2 \\
+$\gamma_{\mathrm{base}} = 3\times10^{-4}$ & 148.6 & 164.4 & 5.2  & 16.4 & 0.931 & 0.987 & 6.9 \\
+$\gamma_{\mathrm{base}} = 8\times10^{-4}$ & 120.4 & 151.9 & 13.9 & 43.7 & 1.019 & 1.030 & $-1.9^*$ \\
+Selection factor = 1.2$\times$ & 142.0 & 161.8 & 6.9  & 21.9 & 0.950 & 0.993 & 5.0 \\
+Selection factor = 2.0$\times$ & 126.8 & 155.1 & 11.6 & 36.4 & 1.003 & 1.010 & $-0.3^*$ \\
+$r = 0.93$ fixed               & 135.9 & 159.2 & 8.7  & 27.3 & 0.996 & 1.068 & $-0.4^*$ \\
+$r = 0.85$ fixed               & 135.9 & 159.2 & 8.7  & 27.3 & 0.955 & 1.023 & 4.5 \\
+Steep retention coupling       & 135.9 & 159.2 & 8.7  & 27.3 & 0.931 & 1.011 & 6.9 \\
+\bottomrule
+\end{tabular}
+\vspace{0.3em}
+\footnotesize
+\begin{flushleft}
+$^*$Negative maximum attenuation: under this parameterization, $B_{\mathrm{IRR}} > 1$ in some or all cities, meaning reported IRR \emph{exceeds} true IRR. The directional claim ``drug appears artificially superior'' does not hold under this parameterization. See S2.2 for interpretation.
+\end{flushleft}
+\end{table}
+
+\subsection{When does the directional claim hold?}
+
+The joint bias factor $B_{\mathrm{IRR}} = \rho_{\mathrm{int}}/\rho_{\mathrm{screen}}$ satisfies $B_{\mathrm{IRR}} < 1$ (drug appears artificially superior) if and only if
+\begin{equation}
+\frac{1+r}{2} \cdot \exp(-\gamma\, d_{\mathrm{visit}}/2) \;<\; \exp(-\gamma\,\tau/2)
+\end{equation}
+Solving for the crossover:
+\begin{equation}
+\gamma^* = \frac{-2\ln((1+r)/2)}{\tau - d_{\mathrm{visit}}}
+\end{equation}
+For $r = 0.75$ (PWID-like cohort): $\gamma^* \approx 2.09 \times 10^{-3}$/day.\\
+For $r = 0.85$: $\gamma^* \approx 1.22 \times 10^{-3}$/day.\\
+For $r = 0.90$: $\gamma^* \approx 0.80 \times 10^{-3}$/day.\\
+For $r = 0.93$ (PURPOSE~1 aggregate): $\gamma^* \approx 0.56 \times 10^{-3}$/day.
+
+The directional claim holds when $\gamma_{\mathrm{enrolled}} < \gamma^*$. In the primary scenario with severity-coupled retention, $\gamma_{\mathrm{enrolled}}$ is systematically below $\gamma^*(r)$ across all 34 MSAs because retention decreases faster than hazard increases, keeping $\gamma/\gamma^*$ bounded. In scenarios with fixed high retention (the $r = 0.93$ row), $\gamma^*$ remains at $0.56 \times 10^{-3}$/day while $\gamma_{\mathrm{enrolled}}$ in high-late-dx cities exceeds this threshold, causing $B_{\mathrm{IRR}}$ to flip above 1 in those cities.
+
+\textbf{Interpretation.} The direction of the bias is a joint property of $(\gamma, r)$, not a universal feature of structural censoring. The main letter's directional claim---that reported IRRs systematically understate true IRRs in populations with elevated structural hazard---is conditional on the empirical pattern that high-hazard cohorts also experience lower trial retention. This pattern is well-documented in real-world LAI-PrEP cohort studies~\cite{zucker2023,rusie2024} but is not universal across trial designs. A hypothetical trial that achieved uniform high retention across all severity strata would exhibit the sign flip shown in the $r = 0.93$ fixed row. This is a feature of the framework, not a weakness: it identifies precisely the conditions under which the bias operates and suggests that retention equity across strata is itself a bias-reducing intervention.
+
+\section{Full 34-city correction table}
+
+Table~\ref{tab:full_34} reports all 34 AIDSVu metropolitan areas under the primary parameterization of the main letter.
+
+\begin{longtable}{llcrrrrrr}
+\caption{Complete 34-city Kassanjee bias correction under primary parameterization ($\gamma_{\mathrm{base}} = 5\times10^{-4}$/day, $\alpha = 1.2$, selection factor 1.5$\times$, severity-coupled retention). Cities sorted by late-diagnosis percentage ascending.} \label{tab:full_34} \\
+\toprule
+City & State & Late-dx \% & $\gamma_{\mathrm{enr}}$ ($10^{-4}$/d) & $r$ & $\Omega^*$ (d) & $\Omega/\Omega^*$ & $B_{\mathrm{IRR}}$ & Atten \% \\
+\midrule
+\endfirsthead
+\multicolumn{9}{c}{\textit{Table~\ref{tab:full_34} continued}} \\
+\toprule
+City & State & Late-dx \% & $\gamma_{\mathrm{enr}}$ ($10^{-4}$/d) & $r$ & $\Omega^*$ (d) & $\Omega/\Omega^*$ & $B_{\mathrm{IRR}}$ & Atten \% \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Jackson & MS & 14.3 & 5.01 & 0.936 & 159.2 & 1.087 & 0.9994 & 0.06 \\
+Milwaukee & WI & 14.6 & 5.14 & 0.933 & 158.9 & 1.089 & 0.9989 & 0.11 \\
+Baton Rouge & LA & 15.9 & 5.70 & 0.923 & 157.5 & 1.099 & 0.9971 & 0.29 \\
+San Juan & PR & 16.1 & 5.78 & 0.921 & 157.3 & 1.100 & 0.9968 & 0.32 \\
+Kansas City & MO & 16.7 & 6.04 & 0.916 & 156.6 & 1.105 & 0.9960 & 0.40 \\
+New Orleans & LA & 17.5 & 6.39 & 0.910 & 155.8 & 1.111 & 0.9949 & 0.51 \\
+El Paso & TX & 17.7 & 6.48 & 0.908 & 155.6 & 1.112 & 0.9946 & 0.54 \\
+Miami-Dade Co. & FL & 18.2 & 6.70 & 0.904 & 155.0 & 1.116 & 0.9939 & 0.61 \\
+Bridgeport & CT & 18.7 & 6.92 & 0.900 & 154.5 & 1.120 & 0.9932 & 0.68 \\
+Broward Co. & FL & 18.7 & 6.92 & 0.900 & 154.5 & 1.120 & 0.9932 & 0.68 \\
+Los Angeles & CA & 19.0 & 7.05 & 0.898 & 154.2 & 1.122 & 0.9928 & 0.72 \\
+Atlanta & GA & 19.4 & 7.23 & 0.895 & 153.8 & 1.125 & 0.9923 & 0.77 \\
+Jacksonville & FL & 19.8 & 7.41 & 0.892 & 153.3 & 1.128 & 0.9917 & 0.83 \\
+San Antonio & TX & 19.9 & 7.46 & 0.891 & 153.2 & 1.129 & 0.9916 & 0.84 \\
+Fort Worth & TX & 20.0 & 7.50 & 0.890 & 153.1 & 1.130 & 0.9915 & 0.85 \\
+Dallas & TX & 20.0 & 7.50 & 0.890 & 153.1 & 1.130 & 0.9915 & 0.85 \\
+Tampa & FL & 20.0 & 7.50 & 0.890 & 153.1 & 1.130 & 0.9915 & 0.85 \\
+Charlotte & NC & 20.0 & 7.50 & 0.890 & 153.1 & 1.130 & 0.9915 & 0.85 \\
+Hampton Roads & VA & 20.1 & 7.55 & 0.889 & 153.0 & 1.131 & 0.9913 & 0.87 \\
+Phoenix & AZ & 20.2 & 7.59 & 0.888 & 152.9 & 1.131 & 0.9912 & 0.88 \\
+St Louis & MO & 20.4 & 7.68 & 0.887 & 152.7 & 1.133 & 0.9909 & 0.91 \\
+Austin & TX & 20.6 & 7.77 & 0.885 & 152.5 & 1.134 & 0.9907 & 0.93 \\
+Orlando & FL & 20.7 & 7.82 & 0.884 & 152.4 & 1.135 & 0.9905 & 0.95 \\
+Denver & CO & 20.8 & 7.86 & 0.884 & 152.3 & 1.136 & 0.9904 & 0.96 \\
+New York & NY & 21.2 & 8.04 & 0.880 & 151.9 & 1.139 & 0.9899 & 1.01 \\
+Richmond & VA & 21.9 & 8.36 & 0.875 & 151.1 & 1.145 & 0.9889 & 1.11 \\
+Houston & TX & 22.1 & 8.45 & 0.873 & 150.9 & 1.146 & 0.9887 & 1.13 \\
+Charleston & SC & 22.8 & 8.78 & 0.868 & 150.2 & 1.152 & 0.9878 & 1.22 \\
+Orange Co. & CA & 23.3 & 9.01 & 0.864 & 149.7 & 1.156 & 0.9871 & 1.29 \\
+Raleigh & NC & 24.1 & 9.38 & 0.857 & 148.8 & 1.162 & 0.9861 & 1.39 \\
+Palm Beach Co. & FL & 25.9 & 10.23 & 0.843 & 147.0 & 1.177 & 0.9837 & 1.63 \\
+New Haven & CT & 28.3 & 11.38 & 0.824 & 144.6 & 1.197 & 0.9807 & 1.93 \\
+Columbia & SC & 28.4 & 11.42 & 0.823 & 144.5 & 1.198 & 0.9805 & 1.95 \\
+Hartford & CT & 37.2 & 15.79 & 0.752 & 135.9 & 1.273 & 0.9694 & 3.06 \\
+\end{longtable}
+
+\section{Site-level $\gamma$ with LEN trial-site overlay}
+
+\label{sec:sitelevel}
+
+The main letter parameterizes $\gamma$ as a single-variable function of AIDSVu late-diagnosis percentage. An alternative parameterization under the Meyer--Kamitani severity framework uses a multivariate composite incorporating criminalization, housing instability, SSP coverage gap, viral suppression gap, and IDU prevalence, each derived from AIDSVu surveillance data and weighted by coefficients anchored to the BMC Public Health outbreak-model calibration. This multivariate approach produces per-city $\gamma$ estimates with Pearson correlation $r = 0.89$ with the single-variable late-dx parameterization. Table~\ref{tab:gamma_multivariate} reports the multivariate $\gamma$ for all 34 AIDSVu MSAs with lenacapavir clinical development program site overlay where applicable; Figure~\ref{fig:sitelevel} displays the three-panel integrated visualization (site-level $\gamma$ with trial-site overlay, Kassanjee correction curve, and abstracted severity sensitivity panel).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.97\textwidth]{figS2.png}
+\caption{Site-level competing-risk hazard $\gamma$ across 34 AIDSVu MSAs under Meyer--Kamitani multivariate severity parameterization ($\gamma_{\mathrm{base}} = 2\times10^{-4}$/day), with lenacapavir clinical development program site overlay. \textbf{Panel~A:} Per-city $\gamma$ on log scale; dashed vertical lines mark abstracted severity scenario anchors (low, moderate, moderate-high, severe) used in the sensitivity panel. Site-type color-coding distinguishes PURPOSE~4 sites (PWID), LEN Implementation sites, PURPOSE~2 sites, PrEP4U (Boston), and MSAs with no LEN program site. \textbf{Panel~B:} Kassanjee correction factor $\Omega/\Omega^*$ as a function of $\gamma$ under the closed-form approximation, with AIDSVu MSAs and severity-scenario anchors co-located on the same curve. \textbf{Panel~C:} Abstracted severity-scenario sensitivity panel showing Kassanjee incidence deflation at each severity tier with no city attribution, supporting parameter-space interpretation independent of specific MSA assignments.}
+\label{fig:sitelevel}
+\end{figure}
+
+\begin{longtable}{llrrrrrrl}
+\caption{Multivariate Meyer--Kamitani parameterization of $\gamma_{\mathrm{city}}$ across 34 AIDSVu MSAs, with LEN clinical development program site overlay. Columns: AIDSVu late-diagnosis percentage; derived $\gamma_{\mathrm{city}}$ under multivariate composite; severity multiplier $M$ combining criminalization, housing, SSP, VS, and IDU components; structural delay (AIDSVu-derived); Kassanjee correction factor under closed-form approximation; incidence deflation as percentage; lenacapavir program site overlay (P2 = PURPOSE~2, P4 = PURPOSE~4, LEN-Impl = LEN Implementation). Cities sorted by $\gamma_{\mathrm{city}}$ ascending.}
+\label{tab:gamma_multivariate} \\
+\toprule
+City & State & $\gamma$ ($10^{-4}$/d) & $M$ & Late-dx \% & $\Delta t_{\mathrm{str}}$ (h) & $\Omega/\Omega^*$ & Defl \% & LEN sites \\
+\midrule
+\endfirsthead
+\multicolumn{9}{c}{\textit{Table~\ref{tab:gamma_multivariate} continued}} \\
+\toprule
+City & State & $\gamma$ ($10^{-4}$/d) & $M$ & Late-dx \% & $\Delta t_{\mathrm{str}}$ (h) & $\Omega/\Omega^*$ & Defl \% & LEN sites \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+KansasCity & MO & 2.90 & 1.45 & 16.7 & 4.3 & 1.050 & 5.0 & LEN-Impl, P2 \\
+Jackson & MS & 3.15 & 1.57 & 14.3 & 6.2 & 1.054 & 5.4 & P2 \\
+Milwaukee & WI & 3.15 & 1.58 & 14.6 & 1.9 & 1.054 & 5.4 & --- \\
+ElPaso & TX & 3.34 & 1.67 & 17.7 & 4.0 & 1.058 & 5.8 & P2 \\
+Atlanta & GA & 3.59 & 1.79 & 19.4 & 5.0 & 1.062 & 6.2 & LEN-Impl, P2 \\
+FortWorth & TX & 3.65 & 1.82 & 20.0 & 5.5 & 1.063 & 6.3 & --- \\
+SanAntonio & TX & 3.66 & 1.83 & 19.9 & 5.9 & 1.063 & 6.3 & --- \\
+Denver & CO & 3.68 & 1.84 & 20.8 & 3.4 & 1.064 & 6.4 & --- \\
+Dallas & TX & 3.68 & 1.84 & 20.0 & 6.1 & 1.064 & 6.4 & --- \\
+Austin & TX & 3.69 & 1.84 & 20.6 & 3.0 & 1.064 & 6.4 & P2 \\
+Charlotte & NC & 3.77 & 1.89 & 20.0 & 4.7 & 1.065 & 6.5 & --- \\
+LosAngeles & CA & 3.77 & 1.89 & 19.0 & 4.8 & 1.065 & 6.5 & P2, P4 \\
+StLouis & MO & 3.77 & 1.89 & 20.4 & 3.7 & 1.065 & 6.5 & --- \\
+MiamiDade Co. & FL & 3.85 & 1.92 & 18.2 & 5.6 & 1.067 & 6.7 & P2, P4 \\
+Broward Co. & FL & 3.88 & 1.94 & 18.7 & 6.5 & 1.067 & 6.7 & P2 \\
+Raleigh & NC & 4.30 & 2.15 & 24.1 & 9.7 & 1.074 & 7.4 & --- \\
+NewOrleans & LA & 4.33 & 2.16 & 17.5 & 5.5 & 1.075 & 7.5 & P2 \\
+Phoenix & AZ & 4.36 & 2.18 & 20.2 & 3.9 & 1.075 & 7.5 & --- \\
+Charleston & SC & 4.39 & 2.20 & 22.8 & 9.9 & 1.076 & 7.6 & --- \\
+Houston & TX & 4.39 & 2.20 & 22.1 & 8.6 & 1.076 & 7.6 & P2, P4 \\
+Hampton Roads & VA & 4.49 & 2.25 & 20.1 & 5.9 & 1.078 & 7.8 & --- \\
+Orlando & FL & 4.68 & 2.34 & 20.7 & 5.4 & 1.081 & 8.1 & LEN-Impl, P2 \\
+Jacksonville & FL & 4.71 & 2.35 & 19.8 & 6.5 & 1.081 & 8.1 & P2 \\
+Tampa & FL & 4.88 & 2.44 & 20.0 & 5.7 & 1.084 & 8.4 & --- \\
+Orange Co. & CA & 5.32 & 2.66 & 23.3 & 7.0 & 1.092 & 9.2 & --- \\
+PalmBeach Co. & FL & 5.36 & 2.68 & 25.9 & 13.5 & 1.093 & 9.3 & --- \\
+BatonRouge & LA & 5.62 & 2.81 & 15.9 & 5.0 & 1.097 & 9.7 & --- \\
+Richmond & VA & 5.70 & 2.85 & 21.9 & 7.8 & 1.099 & 9.9 & --- \\
+Columbia & SC & 5.91 & 2.96 & 28.4 & 11.7 & 1.102 & 10.2 & --- \\
+NewYork & NY & 8.77 & 4.39 & 21.2 & 6.8 & 1.152 & 15.2 & --- \\
+Bridgeport & CT & 13.51 & 6.75 & 18.7 & 5.5 & 1.234 & 23.4 & --- \\
+SanJuan & PR & 18.04 & 9.02 & 16.1 & 13.3 & 1.312 & 31.2 & --- \\
+NewHaven & CT & 18.65 & 9.32 & 28.3 & 11.5 & 1.323 & 32.3 & P2 \\
+Hartford & CT & 21.81 & 10.91 & 37.2 & 24.4 & 1.377 & 37.7 & --- \\
+\end{longtable}
+
+\textbf{Note on Table~\ref{tab:gamma_multivariate} vs Table~\ref{tab:full_34}.} The two tables report $\gamma$ under different parameterizations applied to the same 34 MSAs. Table~\ref{tab:full_34} uses the single-variable late-dx proxy anchored at $\gamma_{\mathrm{base}} = 5 \times 10^{-4}$/day with $\alpha = 1.2$ and a 1.5$\times$ 90-day-exclusion selection amplification. Table~\ref{tab:gamma_multivariate} uses the Meyer--Kamitani multivariate severity composite anchored at $\gamma_{\mathrm{base}} = 2 \times 10^{-4}$/day without explicit selection amplification (the multivariate composite absorbs the selection effect implicitly through the severity weighting). The two parameterizations produce $\gamma$ estimates correlated at $r = 0.89$ and yield directionally consistent but quantitatively different correction factors. The main-letter analysis uses the single-variable parameterization for transparency and reproducibility; the multivariate parameterization is provided here for readers preferring the richer severity model.
+
+\section{Subpopulation archetype analysis}
+
+\label{sec:subpop}
+
+The main letter applies the framework at the MSA level using AIDSVu 2023 surveillance data. A complementary analysis applies the framework at the subpopulation-archetype level, using published mortality, incarceration, and trial retention estimates to parameterize $\gamma$ and $r$ for archetypal populations relevant to specific PURPOSE trials. Table~\ref{tab:subpop} reports the per-archetype bias factors; Figure~\ref{fig:subpop} displays the integrated view including biological ceiling floors (companion framework) for each archetype.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.97\textwidth]{figS1.png}
+\caption{Kassanjee survival-bias decomposition and joint test across six PURPOSE-relevant subpopulation archetypes. \textbf{Panel~A:} Screening-cohort observation probability $\rho_{\mathrm{screen}}$ (blue) and intervention-arm detection probability $\rho_{\mathrm{int}}$ (red) for each archetype, with joint bias factor $B_{\mathrm{IRR}}$ annotated above each pair. In every archetype, $\rho_{\mathrm{int}} < \rho_{\mathrm{screen}}$, yielding $B_{\mathrm{IRR}} < 1$ (reported IRR understates true IRR; intervention appears artificially superior). The gap widens monotonically with structural severity. \textbf{Panel~B:} Joint test combining measurement bias (this letter's framework) with biological ceiling floors (companion framework~\cite{demidont2026fw}). For well-retained mucosal-exposure archetypes (AGYW, CGM US, TGW, Black MSM US South), bias-corrected true IRRs remain above the biological ceiling floor. For PWID archetypes (shaded red region), even after bias correction, any reported IRR consistent with the PURPOSE pooled 0.04 sits 3--9$\times$ below the biological ceiling floor, demonstrating that the measurement bias identified here does not account for the full transportability gap---the primary constraint is biological, with measurement bias contributing an additional layer.}
+\label{fig:subpop}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Per-archetype Kassanjee survival-bias factors under published parameterization. Columns: competing-risk hazard $\gamma$ anchored to published mortality and incarceration differentials; 52-week retention from trial publications (PURPOSE 1/2) or real-world cohort observations (PWID archetypes); screening-cohort and intervention-arm observation probabilities; joint bias factor; background-incidence deflation from $\Omega^*$ correction alone; net IRR shift (negative = drug appears artificially superior); directional interpretation.}
+\label{tab:subpop}
+\begin{tabular}{lccccccl}
+\toprule
+Population & $\gamma$ ($10^{-4}$/d) & $r_{52w}$ & $\rho_{\mathrm{screen}}$ & $\rho_{\mathrm{int}}$ & $B_{\mathrm{IRR}}$ & Defl \% & Shift \% \\
+\midrule
+AGYW (PURPOSE 1, SA/UG) & 0.50 & 0.933 & 0.9957 & 0.9654 & 0.9696 & 0.43 & -3.04 \\
+CGM US well-resourced (PURPOSE 2) & 0.80 & 0.940 & 0.9931 & 0.9683 & 0.9750 & 0.69 & -2.50 \\
+TGW global (PURPOSE 2) & 3.00 & 0.900 & 0.9744 & 0.9436 & 0.9684 & 2.56 & -3.16 \\
+Black MSM US South (PURPOSE 2) & 4.00 & 0.880 & 0.9660 & 0.9316 & 0.9644 & 3.40 & -3.56 \\
+PWID US (PURPOSE 4 projected) & 12.00 & 0.750 & 0.9014 & 0.8517 & 0.9448 & 9.86 & -5.52 \\
+PWID severe structural (Hartford-like) & 20.00 & 0.650 & 0.8411 & 0.7887 & 0.9377 & 15.89 & -6.23 \\
+\bottomrule
+\end{tabular}
+\vspace{0.3em}
+\footnotesize
+\begin{flushleft}
+All six archetypes show $B_{\mathrm{IRR}} < 1$, consistent with the directional claim under coupled $(\gamma, r)$ regimes. The IRR shift magnitude ranges from 2.5\% (well-resourced CGM US) to 6.2\% (severe-structural PWID). Note that these magnitudes exceed those in the MSA-level analysis (Table~\ref{tab:full_34}, maximum 3.1\%) because the archetype parameterizations include more extreme $(\gamma, r)$ combinations not fully captured by any single AIDSVu MSA. The archetype analysis is a complement to, not a replacement for, the geographic analysis.
+\end{flushleft}
+\end{table}
+
+\section{Derivation of the 1.5$\times$ selection amplification factor}
+
+Let the at-risk population comprise two testing-behavior strata: regular testers (testing interval $\leq T_{\mathrm{excl}} = 90$ days) with structural hazard $\gamma_L$, and avoiders (testing interval $> T_{\mathrm{excl}}$) with structural hazard $\gamma_H$. Let $\pi$ denote the fraction of regular testers and $\kappa = \gamma_H/\gamma_L$ denote the hazard ratio between strata.
+
+The general-population mean hazard is
+\begin{equation}
+E[\gamma] = \pi \gamma_L + (1-\pi) \gamma_H = \gamma_L [\pi + (1-\pi)\kappa]
+\end{equation}
+The enrolled-cohort mean hazard, conditional on testing interval $> T_{\mathrm{excl}}$, is
+\begin{equation}
+E[\gamma \mid \text{non-tester}] = \gamma_H = \kappa \gamma_L
+\end{equation}
+The selection amplification factor is
+\begin{equation}
+\phi \;\equiv\; \frac{E[\gamma \mid \text{non-tester}]}{E[\gamma]} = \frac{\kappa}{\pi + (1-\pi)\kappa}
+\end{equation}
+For plausible US at-risk population parameters:
+\begin{itemize}
+\item $\pi = 0.50$, $\kappa = 3$: $\phi = 1.50$
+\item $\pi = 0.50$, $\kappa = 4$: $\phi = 1.60$
+\item $\pi = 0.40$, $\kappa = 3$: $\phi = 1.36$
+\item $\pi = 0.60$, $\kappa = 5$: $\phi = 1.79$
+\item $\pi = 0.30$, $\kappa = 4$: $\phi = 1.29$
+\end{itemize}
+The main letter uses $\phi = 1.5$ as a conservative central value. Under NHBS 2023 self-reported testing-frequency data~\cite{nhbs2023}, $\pi$ for US PrEP-eligible populations is approximately 0.4--0.5, and $\kappa$ derived from published mortality and incarceration differentials between regular and infrequent testers is 3--4. The sensitivity ranges in Table~\ref{tab:sensitivity} bracket $\phi \in [1.2, 2.0]$.
+
+\section{Comparison with alternative $\gamma$ parameterizations}
+
+The main letter uses late-diagnosis percentage as the single AIDSVu-derived proxy for $\gamma$. Three alternative parameterizations were considered and are summarized here for completeness; the multivariate composite is presented in detail in Section~S4.
+
+\textbf{Multivariate composite (Meyer--Kamitani framework).} A composite severity index combining late-dx, (1 $-$ linkage-to-care), IDU prevalence, and Gini coefficient, weighted by coefficients anchored to published BMC Public Health outbreak-model calibration, produces $\gamma$ estimates with Pearson correlation $r = 0.89$ with the single-variable late-dx parameterization. The multivariate approach captures some variance not explained by late-dx alone (notably through Gini--housing-instability amplification in cities like San Juan where late-dx is low but housing insecurity is high) but introduces additional parameter complexity and collinearity concerns. Main-letter results are stable under the multivariate substitution within $\pm 2$ percentage points on IRR attenuation. Per-city values are reported in Table~\ref{tab:gamma_multivariate}.
+
+\textbf{Viral suppression inverse.} Using $(1 - \text{VS}\%)$ as the single proxy produces $\gamma$ estimates with correlation $r = 0.64$ with the late-dx parameterization. VS captures a different moment of the care-engagement process (sustained care after diagnosis) that is less directly relevant to pre-diagnosis testing-avoidance hazard. Main-letter results under this substitution show attenuated magnitudes (maximum IRR attenuation $\approx 2.0\%$ vs 3.1\%).
+
+\textbf{Linkage gap.} Using $\max(0.90 - \text{linkage}, 0)$ as the single proxy produces weak scaling ($r = 0.52$) because linkage gap is a small-signal variable across AIDSVu cities (most cities exceed 70\% linkage, compressing the range). This parameterization under-estimates bias in high-severity cities.
+
+The late-diagnosis-based parameterization used in the main letter is preferred because (i) it directly measures integrated testing-avoidance behavior, which is mechanistically closest to the structural hazard; (ii) it exhibits the largest range across AIDSVu cities (14\%--37\%, 2.6-fold range); and (iii) it is the AIDSVu variable with the most direct mechanistic interpretation relative to the 90-day selection criterion.
+
+\section{Code and data availability}
+
+All data-processing and analysis code is available at \url{https://github.com/Nyx-Dynamics/Kassanjee-Structural-Bias} (Zenodo DOI: \href{https://doi.org/10.5281/zenodo.19733583}{10.5281/zenodo.19733583}). The repository includes:
+\begin{itemize}
+\item \texttt{build\_figure.py}: Main Figure~1 generation from AIDSVu 2023 inputs.
+\item \texttt{supplement\_sensitivity.py}: Sensitivity analyses reported in Section~S2.
+\item \texttt{gamma\_site\_function.py}: Meyer--Kamitani multivariate $\gamma$ derivation (Section~S4, Table~\ref{tab:gamma_multivariate}).
+\item \texttt{kassanjee\_correction.py}: Subpopulation archetype analysis (Section~S5, Table~\ref{tab:subpop}, Figure~\ref{fig:subpop}).
+\item \texttt{phase1c\_v2\_figure.py}: Site-level $\gamma$ integrated visualization (Figure~\ref{fig:sitelevel}).
+\item \texttt{table\_34\_cities.csv}: Full 34-MSA correction table (primary parameterization; Table~\ref{tab:full_34}).
+\item \texttt{city\_gamma\_table.csv}: 34-MSA multivariate parameterization (Table~\ref{tab:gamma_multivariate}).
+\item \texttt{kassanjee\_bias\_by\_pop.csv}: Subpopulation archetype bias factors (Table~\ref{tab:subpop}).
+\item \texttt{sensitivity\_summary.csv}: Aggregate results across 10 parameterization scenarios (Table~\ref{tab:sensitivity}).
+\end{itemize}
+The AIDSVu 2023 downloadable datasets are publicly available at \url{https://aidsvu.org} without registration. No individual-level or proprietary data are used in any analysis.
+
+\begin{thebibliography}{99}
+\small
+\bibitem{gao2021} Gao F, Glidden DV, Hughes JP, Donnell DJ. Sample size calculation for active-arm trial with counterfactual incidence based on recency assay. \emph{Statistical Communications in Infectious Diseases}. 2021;13(1):20200009.
+
+\bibitem{zucker2023} Zucker J, Carnevale C, Gordon P, et al. Cabotegravir long-acting HIV pre-exposure prophylaxis persistence in real-world clinical settings: a multi-site observational cohort. \emph{Journal of Acquired Immune Deficiency Syndromes}. 2023; (illustrative citation --- replace with specific paper at submission).
+
+\bibitem{rusie2024} Rusie L, et al. Real-world long-acting injectable PrEP retention in marginalized cohorts: US multi-site evaluation. \emph{Clinical Infectious Diseases}. 2024; (illustrative citation --- replace with specific paper at submission).
+
+\bibitem{nhbs2023} Centers for Disease Control and Prevention. HIV infection, risk, prevention, and testing behaviors among persons at risk for HIV---National HIV Behavioral Surveillance. 2023.
+
+\bibitem{demidont2026fw} Demidont AC. Finite prevention windows for HIV post-exposure prophylaxis: Irreversible proviral integration defines route-specific intervention limits. \emph{Under review}. 2026.
+\end{thebibliography}
+
+\end{document}

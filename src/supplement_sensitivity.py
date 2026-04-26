@@ -7,13 +7,13 @@ from scipy import stats
 
 # Path handling
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, 'Data')
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 INPUT_FILE = os.path.join(DATA_DIR, 'city_pep_efficacy_results.csv')
 OUTPUT_FILE = os.path.join(DATA_DIR, 'sensitivity_summary.csv')
 
 if not os.path.exists(INPUT_FILE):
-    INPUT_FILE = 'Data/city_pep_efficacy_results.csv'
-    OUTPUT_FILE = 'Data/sensitivity_summary.csv'
+    INPUT_FILE = 'data/city_pep_efficacy_results.csv'
+    OUTPUT_FILE = 'data/sensitivity_summary.csv'
 
 df_base = pd.read_csv(INPUT_FILE)
 
@@ -94,7 +94,7 @@ for name, d in scenarios:
 
 # Path handling
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, 'Data')
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 OUTPUT_FILE = os.path.join(DATA_DIR, 'sensitivity_summary.csv')
 
 pd.DataFrame(rows).to_csv(OUTPUT_FILE, index=False)
@@ -104,7 +104,7 @@ print(f"Saved: {OUTPUT_FILE}")
 # Visualization
 # -----------------------------------------------------------------------------
 def plot_sensitivity(scenarios):
-    FIG_DIR = os.path.join(BASE_DIR, 'Figures')
+    FIG_DIR = os.path.join(BASE_DIR, 'figures')
     os.makedirs(FIG_DIR, exist_ok=True)
     
     fig, ax = plt.subplots(figsize=(10, 6))

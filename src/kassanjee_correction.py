@@ -189,15 +189,10 @@ for pop_name in ["PWID US (PURPOSE 4 projected)", "PWID severe structural (Hartf
     print(f"  Consistent with Milwaukee-tier ceiling? {'YES' if true_irr >= 0.122 else 'NO'}")
     print(f"  Consistent with Hartford-tier ceiling?  {'YES' if true_irr >= 0.387 else 'NO'}")
 
-# Path handling
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, 'Data')
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 OUTPUT_FILE = os.path.join(DATA_DIR, 'kassanjee_bias_by_pop.csv')
 
-try:
-    os.makedirs(DATA_DIR, exist_ok=True)
-    df.to_csv(OUTPUT_FILE, index=False)
-    print(f"\nSaved: {OUTPUT_FILE}")
-except Exception as e:
-    df.to_csv("Data/kassanjee_bias_by_pop.csv", index=False)
-    print(f"\nSaved: Data/kassanjee_bias_by_pop.csv (fallback)")
+os.makedirs(DATA_DIR, exist_ok=True)
+df.to_csv(OUTPUT_FILE, index=False)
+print(f"\nSaved: {OUTPUT_FILE}")

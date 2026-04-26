@@ -18,15 +18,11 @@ if __name__ == "__main__":
     SCR_DIR = os.path.dirname(os.path.abspath(__file__))
     
     scripts = [
-        "prep_city_ceiling_v2.py",
-        "kassanjee_correction.py",
-        "gamma_site_function.py",
-        "supplement_sensitivity.py",
         "build_figure.py",
-        "ceiling_figure.py",
-        "kassanjee_figure.py",
+        "gamma_site_function.py",
         "phase1c_v2_figure.py",
-        "prep_city_figure.py"
+        "kassanjee_correction.py",
+        "supplement_sensitivity.py",
     ]
     
     for script_name in scripts:
@@ -36,4 +32,4 @@ if __name__ == "__main__":
         else:
             print(f"Warning: {script_name} not found in {SCR_DIR}.")
 
-    print(f"\nAll visualizations completed. Check the 'Figures/' directory.")
+    print(f"\nAll visualizations completed. Check the 'figures/' directory.")

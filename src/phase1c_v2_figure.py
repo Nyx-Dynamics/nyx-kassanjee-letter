@@ -6,8 +6,8 @@ import os
 
 # Use absolute paths relative to the script location
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_PATH = os.path.join(BASE_DIR, 'Data', 'city_gamma_table.csv')
-FIGURE_PATH = os.path.join(BASE_DIR, 'Figures', 'fig_phase1c_v2.png')
+DATA_PATH = os.path.join(BASE_DIR, 'data', 'city_gamma_table.csv')
+FIGURE_PATH = os.path.join(BASE_DIR, 'figures', 'fig_phase1c_v2.png')
 
 df = pd.read_csv(DATA_PATH)
 

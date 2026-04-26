@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software or analysis, please cite both the software and the associated preprint."
+title: "Selection on Testing Engagement: A Structural Bias in Cross-Sectional Incidence Estimation Using Recency Assays"
+type: software
+version: v5
+date-released: 2026-04-26
+authors:
+  - family-names: Demidont
+    given-names: A.C.
+    name-suffix: DO, AAHIVS
+    affiliation: "Nyx Dynamics LLC"
+    orcid: "https://orcid.org/0000-0002-9216-8569"
+    email: "ac.demidont@nyxdynamics.com"
+repository-code: "https://github.com/Nyx-Dynamics/nyx-kassanjee-letter"
+license: MIT
+keywords:
+  - HIV
+  - incidence-estimation
+  - recency-assay
+  - Kassanjee-estimator
+  - lenacapavir
+  - structural-bias
+  - PrEP
+preferred-citation:
+  type: article
+  title: "Selection on Testing Engagement: A Structural Bias in Cross-Sectional Incidence Estimation Using Recency Assays"
+  authors:
+    - family-names: Demidont
+      given-names: A.C.
+      name-suffix: DO, AAHIVS
+      affiliation: "Nyx Dynamics LLC"
+      orcid: "https://orcid.org/0000-0002-9216-8569"
+  year: 2026
+  month: 4
+  doi: "TBD"
+  notes: "medRxiv submission; DOI to be assigned upon posting."

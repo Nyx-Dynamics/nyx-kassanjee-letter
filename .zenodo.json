@@ -1,0 +1,51 @@
+{
+  "title": "Selection on Testing Engagement: A Structural Bias in Cross-Sectional Incidence Estimation Using Recency Assays",
+  "description": "Analysis and visualization pipeline for the Demidont extension of the Kassanjee/Gao cross-sectional HIV incidence estimator under structural censoring. Implements the effective MDRI correction Omega*(gamma), the joint IRR bias factor B_IRR, and applies the framework to 34 high-burden US metropolitan areas using AIDSVu 2023 surveillance data. Includes manuscript LaTeX sources, generated figures, processed data tables, and reproducibility scaffolding.",
+  "creators": [
+    {
+      "name": "Demidont, A.C.",
+      "affiliation": "Nyx Dynamics LLC",
+      "orcid": "0000-0002-9216-8569"
+    }
+  ],
+  "keywords": [
+    "HIV",
+    "incidence estimation",
+    "recency assay",
+    "Kassanjee estimator",
+    "lenacapavir",
+    "PrEP",
+    "structural bias",
+    "AIDSVu",
+    "PURPOSE 1",
+    "PURPOSE 2"
+  ],
+  "license": "CC-BY-4.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "version": "v5",
+  "publication_date": "2026-04-26",
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19733583",
+      "relation": "isVersionOf",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.20944/preprints202601.1090.v1",
+      "relation": "isCitedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.20944/preprints202601.0948.v1",
+      "relation": "isCitedBy",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "TBD",
+      "relation": "isSupplementTo",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    }
+  ]
+}

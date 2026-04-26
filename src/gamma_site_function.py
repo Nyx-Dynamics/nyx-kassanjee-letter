@@ -68,7 +68,7 @@ def gamma_from_aidsvu(row):
 # =============================================================================
 script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.abspath(os.path.join(script_dir, ".."))
-data_path = os.path.join(project_root, 'Data', 'city_pep_efficacy_results.csv')
+data_path = os.path.join(project_root, 'data', 'city_pep_efficacy_results.csv')
 
 df = pd.read_csv(data_path)
 print(f"Loaded {len(df)} AIDSVu MSAs\n")
@@ -107,7 +107,7 @@ for jf, trial_label in [
     ('PrEP4U_sameday_start.json', 'PrEP4U'),
     ('LEN_implementation.json',   'LEN_Impl'),
 ]:
-    json_path = os.path.join(project_root, 'Data', jf)
+    json_path = os.path.join(project_root, 'data', jf)
     if os.path.exists(json_path):
         with open(json_path) as f:
             d = json.load(f)
@@ -165,7 +165,7 @@ print(f"Correction factor range: {gdf['correction_factor'].min():.3f} – {gdf['
 print(f"Incidence deflation range: {gdf['incidence_deflation_pct'].min():.2f}% – {gdf['incidence_deflation_pct'].max():.2f}%")
 
 # Save
-output_path = os.path.join(project_root, 'Data', 'city_gamma_table.csv')
+output_path = os.path.join(project_root, 'data', 'city_gamma_table.csv')
 gdf_sorted.to_csv(output_path, index=False)
 print(f"\nSaved: {output_path}")
 

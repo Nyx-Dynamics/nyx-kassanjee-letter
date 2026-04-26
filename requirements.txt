@@ -1,0 +1,6 @@
+# Pinned to major.minor of versions installed in .venv (2026-04-26).
+# Loose enough for ~2-year reproducibility.
+numpy>=1.26,<2.0
+pandas>=2.3,<3.0
+matplotlib>=3.9,<4.0
+scipy>=1.12,<2.0

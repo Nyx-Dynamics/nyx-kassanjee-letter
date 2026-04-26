@@ -6,17 +6,17 @@ import matplotlib.pyplot as plt
 
 # Path handling
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, 'Data')
-FIG_DIR = os.path.join(BASE_DIR, 'Figures')
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+FIG_DIR = os.path.join(BASE_DIR, 'figures')
 os.makedirs(FIG_DIR, exist_ok=True)
 
 INPUT_FILE = os.path.join(DATA_DIR, 'city_pep_efficacy_results.csv')
 OUTPUT_TABLE = os.path.join(DATA_DIR, 'table_34_cities.csv')
 
 if not os.path.exists(INPUT_FILE):
-    INPUT_FILE = 'Data/city_pep_efficacy_results.csv'
-    OUTPUT_TABLE = 'Data/table_34_cities.csv'
-    FIG_DIR = 'Figures'
+    INPUT_FILE = 'data/city_pep_efficacy_results.csv'
+    OUTPUT_TABLE = 'data/table_34_cities.csv'
+    FIG_DIR = 'figures'
 
 df = pd.read_csv(INPUT_FILE)
 

@@ -252,3 +252,83 @@ This methodological letter is part of a broader research program on HIV preventi
 ---
 
 *Repository initialized April 2026. Archived on Zenodo with minted DOI for permanent citation.*
+
+---
+
+## Version 7 (May 2026)
+
+This release adds longitudinal empirical validation of the
+structural-functions reframing introduced in v6, using the 2014–2023
+AIDSVu county-level panel.
+
+### What's new in v7
+
+- **Main letter §4.6:** Four independent longitudinal analyses
+  (temporal stability, pre/post-EHE break-point, state-vs-MSA
+  divergence, CDC-220 overlay, Kassanjee invariance test).
+- **Main letter §5.1:** Augmented paragraph connecting the
+  longitudinal evidence to LEN-deployment concerns.
+- **New Figures 2 and 3.**
+- **Supplement §S8:** Methods for the longitudinal additions.
+- **Abstract and Conclusion** updated with empirical-anchoring summary.
+
+### Key empirical result
+
+Spearman ρ = 0.9979 across 34 high-burden US MSAs in the Kassanjee
+correction invariance test, with 34/34 cities yielding identical
+optimal cascade policies with and without the correction applied.
+This is the empirical signature of joint structural co-determination
+predicted by the SCM reframing in §3.3 — not a measurement-error
+proxy relationship.
+
+### Repository structure
+
+Flat layout. Manuscript and supplement (`.tex` + compiled `.pdf`) at
+root. Main figures (`Fig_1_*`, `Fig_2_*`, `Fig_3_*`) and supplement
+figures (`Fig_S1`, `Fig_S2`) at root. Data CSVs and Python scripts at
+root. No subdirectories.
+
+### Reproduction workflow
+
+```bash
+# 1. Reproduce the longitudinal panel CSVs from AIDSVu raw .xlsx files
+python build_longitudinal_panel.py --data-dir /path/to/aidsvu/xlsx \
+                                   --cdc-220 cdc_220_counties.csv
+
+# 2. Run the Kassanjee invariance test (requires companion repo)
+python kassanjee_invariance_test.py
+
+# 3. Regenerate the figures
+python Fig_4_stratum_trajectories.py    # produces Fig_2_*.png/.pdf
+python Fig_5_kassanjee_invariance.py    # produces Fig_3_*.png/.pdf
+
+# 4. Compile the manuscript
+pdflatex kassanjee_bias_letter_v7.tex
+pdflatex kassanjee_bias_letter_v7.tex
+pdflatex kassanjee_bias_supplement_v7.tex
+pdflatex kassanjee_bias_supplement_v7.tex
+```
+
+### Citation
+
+If using v7, please cite as:
+
+```
+Demidont AC. Calibration-to-Deployment Mismatch in HIV Prevention
+Trials: How Structural Censoring Biases Counterfactual Incidence
+Estimates (v7). Zenodo. May 2026. doi:10.5281/zenodo.XXXXXXXX
+```
+
+DOI assigned by Zenodo upon publication of the new version. See
+CITATION.cff for the canonical citation metadata.
+
+---
+
+## Version history
+
+- **v7 (May 2026):** Longitudinal additions; this release. See
+  CHANGELOG.md.
+- **v6 (April 2026):** Intermediate. SCM reframing, operational
+  consequences, 22.5-day window argument.
+- **v4 (March 2026):** Initial Zenodo deposit. DOI
+  10.5281/zenodo.19796212.

@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this software or its outputs in published work, please cite the article and the software deposit."
+type: software
+authors:
+  - family-names: Demidont
+    given-names: A.C.
+    name-suffix: DO, AAHIVS
+    orcid: https://orcid.org/0000-0002-9216-8569
+    affiliation: Nyx Dynamics LLC
+    email: ac.demidont@nyxdynamics.com
+title: "Calibration-to-Deployment Mismatch in HIV Prevention Trials: How Structural Censoring Biases Counterfactual Incidence Estimates"
+version: 7.0.0
+date-released: 2026-05-XX  # update to actual Zenodo publish date
+doi: 10.5281/zenodo.XXXXXXXX  # update with v7 DOI after Zenodo mints it
+url: https://github.com/Nyx-Dynamics/nyx-kassanjee-letter
+repository-code: https://github.com/Nyx-Dynamics/nyx-kassanjee-letter
+license: CC-BY-4.0
+keywords:
+  - HIV incidence
+  - Kassanjee estimator
+  - recent-infection testing algorithm
+  - pre-exposure prophylaxis
+  - lenacapavir
+  - structural barriers
+  - PWID
+  - trial design
+  - reproducibility
+  - longitudinal surveillance
+  - AIDSVu
+  - EHE
+  - causal inference
+  - structural functions
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Demidont
+      given-names: A.C.
+      orcid: https://orcid.org/0000-0002-9216-8569
+  title: "Calibration-to-Deployment Mismatch in HIV Prevention Trials: How Structural Censoring Biases Counterfactual Incidence Estimates"
+  year: 2026
+  journal: "Journal of Acquired Immune Deficiency Syndromes"
+  status: submitted

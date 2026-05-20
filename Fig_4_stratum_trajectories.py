@@ -20,8 +20,8 @@ Input:
     columns: stratum, year, total_dx, total_idu, n_counties_reporting, idu_share_pct
 
 Output:
-  Figure_2.png  (300 dpi)
-  Figure_2.pdf  (vector)
+  Fig_2_stratum_trajectories.png  (300 dpi)
+  Fig_2_stratum_trajectories.pdf  (vector)
 """
 
 import pandas as pd
@@ -106,9 +106,9 @@ fig.text(0.5, 0.005,
          ha='center', fontsize=7, style='italic', color='#555555')
 
 plt.tight_layout(rect=[0, 0.02, 0.78, 1.0])
-plt.savefig('Figure_2.png', dpi=300, bbox_inches='tight', facecolor='white')
-plt.savefig('Figure_2.pdf', bbox_inches='tight', facecolor='white')
-print('Saved: Figure_2.png and Figure_2.pdf')
+plt.savefig('Fig_2_stratum_trajectories.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.savefig('Fig_2_stratum_trajectories.pdf', bbox_inches='tight', facecolor='white')
+print('Saved: Fig_2_stratum_trajectories.png and Fig_2_stratum_trajectories.pdf')
 print(f'Panel A range: total dx {agg["total_dx"].min():.0f} – {agg["total_dx"].max():.0f}')
 print(f'Panel B range: IDU dx  {agg["total_idu"].min():.0f} – {agg["total_idu"].max():.0f}')
 print(f'Panel C range: IDU %   {agg["idu_share_pct"].min():.2f} – {agg["idu_share_pct"].max():.2f}')

@@ -19,10 +19,11 @@ Panel B: Step-by-step policy invariance.
     All 5 bars at 100% — visualizing the 34/34 result.
 
 Inputs:
-  /home/claude/kassanjee_sensitivity_test.csv
+  kassanjee_sensitivity_test.csv
 
 Output:
-  ./Fig_5_kassanjee_invariance.png  (300 dpi)
+  Fig_3_kassanjee_invariance.png  (300 dpi)
+  Fig_3_kassanjee_invariance.pdf  (vector)
 """
 
 import pandas as pd
@@ -31,7 +32,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import pearsonr, spearmanr
 
 # ---- Load data ----
-df = pd.read_csv('/home/claude/kassanjee_sensitivity_test.csv')
+df = pd.read_csv('kassanjee_sensitivity_test.csv')
 n = len(df)
 
 # Pre-compute correlations and invariance counts
@@ -131,9 +132,9 @@ for bar, pct in zip(bars, step_pct):
             ha='center', va='bottom', fontsize=8, fontweight='bold')
 
 plt.tight_layout()
-plt.savefig('/home/claude/Fig_5_kassanjee_invariance.png', dpi=300, bbox_inches='tight', facecolor='white')
-plt.savefig('/home/claude/Fig_5_kassanjee_invariance.pdf', bbox_inches='tight', facecolor='white')
-print('Saved: Fig_5_kassanjee_invariance.png and .pdf')
+plt.savefig('Fig_3_kassanjee_invariance.png', dpi=300, bbox_inches='tight', facecolor='white')
+plt.savefig('Fig_3_kassanjee_invariance.pdf', bbox_inches='tight', facecolor='white')
+print('Saved: Fig_3_kassanjee_invariance.png and Fig_3_kassanjee_invariance.pdf')
 print(f'\nDiagnostic output:')
 print(f'  n = {n} MSAs')
 print(f'  Pearson r  = {r:.4f}  (p = {p_r:.2e})')

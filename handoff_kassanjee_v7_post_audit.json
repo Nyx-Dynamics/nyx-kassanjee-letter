@@ -1,0 +1,174 @@
+{
+  "schema_version": "post_audit_2026-05-21",
+  "supersedes": "handoff_kassanjee_v7_post_canonical.json",
+  "supersedes_status": "INVALID — the prior 'canonical' values are the output of build_xlxs.py, not a triangulation; the freshly-uploaded CSVs are the output of build_longitudinal_panel.py which has independent bugs. Neither script is presently a clean source. See audit_report.md.",
+  "auditor": "Claude Code session, 2026-05-21",
+  "operator": "Dr. A.C. Demidont, DO",
+  "decision_pending": "audit_decisions_for_AC.md — AC must adjudicate (a) pipeline authority, (b) reporting-n framing, (c) Wake County narrative, (d) Stratum B trajectory framing before any manuscript patching resumes.",
+
+  "stability_assessment": {
+    "determinism": "PASS — two consecutive runs of build_longitudinal_panel.py produce byte-identical outputs across all 4 CSVs.",
+    "transparency": "PARTIAL FAIL — Fig_4 legend strings are stale literals divorced from the CSV; build_figure.py has /mnt/project and /home/claude hard-coded paths.",
+    "honest_counts": "FAIL — n_counties_reporting in build_longitudinal_panel.py reflects rows that survive a buggy filter (including AIDSVu -1 suppression codes treated as integers); the values 51/213/2958 are not 'reporting' counts.",
+    "anchored_constants": "PARTIAL FAIL — ALPHA=1.2 and SELECTION_AMP=1.5 in build_figure.py have informal in-comment anchors but no resolvable citation keys. Retention function constants match §4.1 spec. No per-city conditional branches found."
+  },
+
+  "data_authority": {
+    "canonical_csv_source_script": "build_longitudinal_panel.py",
+    "canonical_csv_files": [
+      "aidsvu_220_overlay_annual_agg_2013_2023.csv",
+      "aidsvu_msa_newdx_panel_2013_2023.csv",
+      "aidsvu_state_newdx_panel_2008_2023.csv",
+      "cdc_220_counties_with_msa_flag.csv"
+    ],
+    "prior_handoff_numbers_actual_source": "build_xlxs.py → aidsvu_combined_2014_2023_FULL.xlsx, 'Stratum_Aggregates' sheet",
+    "pipelines_disagree_because": "materially different aggregation methods (see method_documentation below), NOT rounding."
+  },
+
+  "method_documentation": {
+    "build_longitudinal_panel_py": {
+      "idu_computation": "df['n_idu_dx'] = df['n_new_dx'] * df['idu_pct'] / 100.0  (line 142)",
+      "suppression_handling": "BROKEN — pd.to_numeric(errors='coerce') leaves integer -1/-2/-9 unchanged. dropna only catches genuine NaN. -1 rows are summed into total_dx and total_idu.",
+      "stratum_a_definition": "Per-year match of MSA_COUNTY_MAP (state, bare_name) against AIDSVu (state, county) after stripping ' County' and ' Parish' only. NOT robust to ' city', ' Municipio', or embedded newlines.",
+      "stratum_a_missing_constituents": [
+        "Virginia: Norfolk, Virginia Beach, Chesapeake (AIDSVu uses ' city' suffix)",
+        "Louisiana: East Baton Rouge (AIDSVu uses 'East Baton Rouge\\nParish' with embedded newline)",
+        "Puerto Rico: San Juan (AIDSVu uses ' Municipio' suffix; San Juan reported n_new_dx=91 in 2023)",
+        "Connecticut: all three Planning Regions for Bridgeport, Hartford, NewHaven (AIDSVu uses embedded newlines in names)"
+      ],
+      "msa_map_total_entries": 59,
+      "msa_map_actually_matched_per_year": 51,
+      "n_counties_reporting_semantics": "rows with non-NaN n_new_dx after buggy coerce — INCLUDES rows where n_new_dx == -1 (suppressed). Not 'counties reporting'.",
+      "wake_county_partition": "Stratum A (msa_keys precedence in lines 309-314); overlay file flags in_msa=True, msa_name=Raleigh"
+    },
+    "build_xlxs_py": {
+      "idu_computation": "Sums integer 'New Diagnoses IDU Cases' column directly via .sum(skipna=True) (lines 184, 230)",
+      "suppression_handling": "CORRECT — SUPPRESSION_CODES = [-1, -2, -9] are converted to NaN on any column containing 'Cases'/'Rate'/'Percent' before arithmetic (lines 39, 117).",
+      "stratum_a_definition": "FIPS-set frozen from 2023 matches (lines 277-286). Keys include literal ' County'/' Parish'/' city'/' Municipio' suffixes; handles 2022+ CT Planning Region transition with both historical-County AND Planning-Region entries per CT MSA.",
+      "msa_map_total_entries": 63,
+      "n_counties_reporting_semantics": "sub['n_new_dx'].notna().sum() AFTER suppression cleaning — actual reporting count.",
+      "agrees_with_ac_manual_integer_rebuild": "EXACT match on Stratum B 2014-2023 (46, 38, 33, 79, 93, 99, 43, 66, 84, 46)."
+    }
+  },
+
+  "cdc_220_duplicate_fips_findings": {
+    "raw_rows": 220,
+    "unique_fips": 216,
+    "unique_state_county": 216,
+    "in_msa_false_rows": 219,
+    "in_msa_false_unique_fips": 215,
+    "in_msa_false_unique_state_county": 215,
+    "duplicate_by_fips": [
+      {"fips": "21235", "state": "Kentucky", "rows": ["Whitley (rank 26)", "Whitley (rank 61)"], "note": "exact (state,name) duplicate — collapses to 1 in name-keyed set"},
+      {"fips": "47049", "state": "Tennessee", "rows": ["Fentress (rank 37)", "Hancock (rank 52)"], "note": "FIPS misalignment — Hancock TN actual FIPS is 47067; matching is by name, so both counted correctly"},
+      {"fips": "47087", "state": "Tennessee", "rows": ["Jackson (rank 42)", "Macon (rank 90)"], "note": "FIPS misalignment — Macon TN actual FIPS is 47111; matching by name, both counted"},
+      {"fips": "47095", "state": "Tennessee", "rows": ["Lake (rank 48)", "Lake (rank 216)"], "note": "exact (state,name) duplicate — collapses"}
+    ],
+    "duplicate_by_state_county_name_NOT_in_ACs_original_list": [
+      {"state": "Pennsylvania", "name": "Schuylkill", "fips_pair": ["42107", "42135"], "note": "Schuylkill PA actual FIPS is 42107; 42135 is Wyoming Co PA"},
+      {"state": "West Virginia", "name": "Boone", "fips_pair": ["54009", "54005"], "note": "Boone WV actual FIPS is 54005; 54009 is incorrect"}
+    ],
+    "script_behavior": "build_longitudinal_panel.py keys on (state, county_name) via Python set, which collapses all dup-by-name pairs to single entries. No double-counting in Stratum B sums. The misaligned FIPS columns only affect the FIPS field of cdc_220_counties_with_msa_flag.csv (incorrect FIPS for 4 rows), not the stratum aggregates."
+  },
+
+  "stratum_endpoints_canonical_csv": {
+    "source": "aidsvu_220_overlay_annual_agg_2013_2023.csv (build_longitudinal_panel.py output, 2026-05-21 09:19 timestamp)",
+    "WARNING": "Values below are contaminated by AIDSVu suppression-code (-1, -2, -9) being treated as numeric data. Do not cite these as clean diagnosis counts without acknowledging the limitation.",
+    "A_msa": {
+      "n_counties_reporting_constant_2013_2023": 51,
+      "n_counties_reporting_semantics": "name-matched MSA constituents (8 of 59 missing due to naming bugs); NOT year-varying reporting count",
+      "total_idu_2014": 628.418,
+      "total_idu_2023": 623.588,
+      "trajectory_2014_2023": [628.418, 631.602, 595.536, 595.453, 619.776, 610.541, 536.406, 559.192, 602.517, 623.588],
+      "pct_change_2014_to_2023": -0.77
+    },
+    "B_vuln_rural": {
+      "n_counties_reporting_constant_2013_2023": 213,
+      "n_counties_reporting_semantics": "rows surviving buggy coerce of cdc_220 outside-MSA entries; not literal reporting",
+      "total_idu_2014": 43.534,
+      "total_idu_2023": 42.168,
+      "trajectory_2014_2023": [43.534, 36.016, 28.849, 73.972, 88.983, 94.482, 40.427, 63.076, 80.485, 42.168],
+      "peak_year": 2019,
+      "peak_value": 94.482,
+      "pct_change_2014_to_2023": -3.14,
+      "manuscript_framing_status": "the prior handoff's 'flat 46→46 across decade' is misleading — endpoints are coincidentally close but the trajectory peaks at the EHE-launch year (2019), drops sharply in 2020 (COVID + EHE-launch year), and oscillates"
+    },
+    "C_other": {
+      "n_counties_reporting_constant_2013_2023": 2958,
+      "n_counties_reporting_semantics": "rows surviving buggy coerce; not literal reporting (-1 rows kept)",
+      "total_idu_2014": 613.657,
+      "total_idu_2023": 689.109,
+      "trajectory_2014_2023": [613.657, 738.648, 642.433, 753.860, 748.671, 806.179, 568.318, 859.261, 805.633, 689.109],
+      "pct_change_2014_to_2023": 12.30
+    }
+  },
+
+  "stratum_endpoints_build_xlxs_alternative": {
+    "source": "aidsvu_combined_2014_2023_FULL.xlsx, sheet Stratum_Aggregates (build_xlxs.py output, 2026-05-21 08:36 timestamp)",
+    "method": "integer 'New Diagnoses IDU Cases' sum AFTER suppression-to-NaN cleaning; FIPS-based stratum assignment; correct MSA name handling",
+    "A_msa": {
+      "n_counties_reporting_constant_2014_2023": 55,
+      "total_idu_2014": 636,
+      "total_idu_2023": 631,
+      "trajectory_2014_2023": [636, 655, 604, 603, 628, 624, 543, 569, 611, 631]
+    },
+    "B_vuln_rural": {
+      "n_counties_reporting_range_2014_2023": [114, 130],
+      "total_idu_2014": 46,
+      "total_idu_2023": 46,
+      "trajectory_2014_2023": [46, 38, 33, 79, 93, 99, 43, 66, 84, 46],
+      "peak_year": 2019,
+      "peak_value": 99,
+      "matches_ac_manual_integer_rebuild": true
+    },
+    "C_other": {
+      "n_counties_reporting_range_2014_2023": [1872, 1968],
+      "total_idu_2014": 561,
+      "total_idu_2023": 646,
+      "trajectory_2014_2023": [561, 667, 595, 692, 696, 745, 497, 801, 754, 646]
+    }
+  },
+
+  "kassanjee_invariance_test": {
+    "input_csv": "kassanjee_sensitivity_test.csv (locally present)",
+    "produced_by": "kassanjee_invariance_test.py (default output path on line 88)",
+    "reproduced_locally_on_2026_05_21": true,
+    "pearson_r": 0.9998,
+    "spearman_rho": 0.9979,
+    "n_msas": 34,
+    "identical_policies": "34/34 (100%)",
+    "step_by_step_match_pct": [100, 100, 100, 100, 100],
+    "stability": "STABLE — values reproduce exactly"
+  },
+
+  "build_figure_py_constants": {
+    "TAU": 173.0,
+    "GAMMA_BASE": 5e-4,
+    "ALPHA": 1.2,
+    "SELECTION_AMP": 1.5,
+    "LATE_DX_REF": 20.0,
+    "D_VISIT_HALF": 22.5,
+    "retention_function": "max(0.93 - 0.008 * (late_dx_pct - 15.0), 0.70)",
+    "retention_matches_section_4_1_spec": true,
+    "per_city_conditional_branches": "NONE FOUND — no `if city == X: retention = Y` patterns",
+    "inline_citation_status": "ALPHA and SELECTION_AMP have informal in-comment anchors only (no bibliographic key); retention comments reference 'PURPOSE 1/2 aggregate' and 'real-world LAI in marginalized cohorts' without specific citation",
+    "executability_locally": "WILL NOT RUN — line 6 reads /mnt/project/city_pep_efficacy_results.csv (Anthropic compute path); lines 38, 111, 112 write to /home/claude/letter/ (Anthropic compute path). Local candidate input is city_gamma_table.csv (column-compatible)."
+  },
+
+  "fig_4_legend_labels_stale": {
+    "script": "Fig_4_stratum_trajectories.py lines 47-49",
+    "current_labels": ["n=84 counties", "n=220", "n=2,918"],
+    "match_canonical_csv": false,
+    "match_build_xlxs_xlsx": false,
+    "diagnosis": "Stale literals carried over from a prior session; not derived from any current pipeline output."
+  },
+
+  "epidemiological_consequences_of_bugs": [
+    "Hampton Roads MSA is empty in Stratum A — all 3 Virginia independent cities (Norfolk, Virginia Beach, Chesapeake) dropped by ' city' suffix non-handling",
+    "All three Connecticut MSAs (Bridgeport, Hartford, NewHaven) are empty in Stratum A — Planning Region names contain embedded newlines that defeat string equality",
+    "Baton Rouge MSA is empty in Stratum A — embedded newline in 'East Baton Rouge\\nParish'",
+    "San Juan PR is empty in Stratum A despite reporting n_new_dx=91 in 2023 — ' Municipio' suffix not stripped",
+    "All county rows where n_new_dx == -1 (1,170 rows in 2023 alone) contribute -1 to total_dx in whatever stratum they land",
+    "All county rows where idu_pct == -1 with positive n_new_dx contribute negative IDU diagnoses proportional to n_new_dx"
+  ]
+}

@@ -1,42 +1,132 @@
 cff-version: 1.2.0
-message: "If you use this software or its outputs in published work, please cite the article and the software deposit."
-type: software
-authors:
-  - family-names: Demidont
-    given-names: A.C.
-    name-suffix: DO, AAHIVS
-    orcid: https://orcid.org/0000-0002-9216-8569
-    affiliation: Nyx Dynamics LLC
-    email: ac.demidont@nyxdynamics.com
+message: "If you use this software or manuscript in your research, please cite it as below."
 title: "Calibration-to-Deployment Mismatch in HIV Prevention Trials: How Structural Censoring Biases Counterfactual Incidence Estimates"
-version: 7.0.0
-date-released: 2026-05-XX  # update to actual Zenodo publish date
-doi: 10.5281/zenodo.XXXXXXXX  # update with v7 DOI after Zenodo mints it
-url: https://github.com/Nyx-Dynamics/nyx-kassanjee-letter
-repository-code: https://github.com/Nyx-Dynamics/nyx-kassanjee-letter
-license: CC-BY-4.0
+abstract: >
+  Cross-sectional HIV incidence estimation using recent-infection testing
+  algorithms (RITAs) underpins counterfactual-controlled pre-exposure
+  prophylaxis (PrEP) efficacy trials. The Kassanjee estimator assumes
+  closed-system observability: that every recently-infected individual within
+  the recency window is equally present at screening. Populations experiencing
+  structural censoring—competing-risk hazards from overdose, incarceration,
+  displacement, and related mechanisms—violate this assumption in a systematic
+  and directional manner. This work derives the effective mean duration of
+  recent infection under structural censoring, the joint bias factor on the
+  reported incidence rate ratio, and a stratified-longitudinal surveillance
+  correction. The framework is applied to 34 high-burden US MSAs and
+  empirically anchored against a 10-year AIDSVu county-level panel.
+version: "9.0"
+date-released: "2026-05-22"
+doi: "10.5281/zenodo.20344293"
+url: "https://doi.org/10.5281/zenodo.20344293"
+repository-code: "https://github.com/Nyx-Dynamics/nyx-kassanjee-letter"
+type: software
+license:
+  - CC-BY-4.0
+  - MIT
+authors:
+  - family-names: "Demidont"
+    given-names: "A.C."
+    name-suffix: "DO, AAHIVS"
+    affiliation: "Nyx Dynamics LLC"
+    orcid: "https://orcid.org/0000-0002-9216-8569"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20344293"
+    description: "Versioned DOI for v9.0 (this release)"
+  - type: doi
+    value: "10.5281/zenodo.19796212"
+    description: "Prior version (v4) — superseded"
+  - type: doi
+    value: "10.5281/zenodo.19733583"
+    description: "Earlier version (v3) — superseded"
 keywords:
-  - HIV incidence
+  - HIV prevention
+  - PrEP
+  - cross-sectional incidence
+  - recency assay
   - Kassanjee estimator
-  - recent-infection testing algorithm
-  - pre-exposure prophylaxis
+  - RITA
+  - structural bias
+  - survival analysis
+  - HIV epidemiology
+  - competing risk
+  - clinical trial methodology
+  - measurement bias
   - lenacapavir
-  - structural barriers
-  - PWID
-  - trial design
-  - reproducibility
-  - longitudinal surveillance
+  - PURPOSE trials
   - AIDSVu
-  - EHE
-  - causal inference
-  - structural functions
+  - selection bias
+  - HIV testing engagement
+  - MDRI correction
+  - trial design
+  - stratified longitudinal surveillance
+  - time series analysis
+  - COVID counterfactual
+  - EHE-priority MSAs
+  - CDC 220-vulnerable counties
+  - PWID
+  - calibration to deployment
+references:
+  - type: article
+    authors:
+      - family-names: "Kassanjee"
+        given-names: "R."
+      - family-names: "McWalter"
+        given-names: "T.A."
+      - family-names: "Barnighausen"
+        given-names: "T."
+      - family-names: "Welte"
+        given-names: "A."
+    title: "A new general biomarker-based incidence estimator"
+    journal: "Epidemiology"
+    year: 2012
+    volume: 23
+    issue: 5
+    start: 721
+    end: 728
+  - type: article
+    authors:
+      - family-names: "Gao"
+        given-names: "F."
+      - family-names: "Glidden"
+        given-names: "D.V."
+      - family-names: "Hughes"
+        given-names: "J.P."
+      - family-names: "Donnell"
+        given-names: "D.J."
+    title: "Sample size calculation for active-arm trial with counterfactual incidence based on recency assay"
+    journal: "Statistical Communications in Infectious Diseases"
+    year: 2021
+    volume: 13
+    issue: 1
+    notes: "Article 20200009"
+  - type: generic
+    authors:
+      - family-names: "Demidont"
+        given-names: "A.C."
+    title: "Finite Prevention Windows for HIV Post-Exposure Prophylaxis"
+    year: 2026
+    doi: "10.20944/preprints202601.1090.v2"
+    notes: "Four-corners Corner 2; under peer review at Science Advances"
+  - type: generic
+    authors:
+      - family-names: "Demidont"
+        given-names: "A.C."
+    title: "Structural Barriers, Stochastic Avoidance, and Outbreak Risk in HIV Prevention for People Who Inject Drugs"
+    year: 2026
+    doi: "10.20944/preprints202601.0948.v1"
+    notes: "Four-corners Corner 3; under peer review at BMC Public Health"
 preferred-citation:
-  type: article
-  authors:
-    - family-names: Demidont
-      given-names: A.C.
-      orcid: https://orcid.org/0000-0002-9216-8569
+  type: software
   title: "Calibration-to-Deployment Mismatch in HIV Prevention Trials: How Structural Censoring Biases Counterfactual Incidence Estimates"
+  authors:
+    - family-names: "Demidont"
+      given-names: "A.C."
+      orcid: "https://orcid.org/0000-0002-9216-8569"
   year: 2026
-  journal: "Journal of Acquired Immune Deficiency Syndromes"
-  status: submitted
+  month: 5
+  version: "9.0"
+  doi: "10.5281/zenodo.20344293"
+  url: "https://doi.org/10.5281/zenodo.20344293"
+  publisher:
+    name: "Zenodo"

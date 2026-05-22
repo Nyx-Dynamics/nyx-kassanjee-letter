@@ -1,0 +1,44 @@
+build_xlxs.py — run provenance metadata
+================================================================
+Run timestamp:    2026-05-22_073404
+Wall time start:  2026-05-22T07:34:24.308904
+Hostname:         AdriansacStudio.localdomain
+Platform:         macOS-15.7.1-arm64-arm-64bit
+Python:           3.12.10
+Pandas:           3.0.3
+NumPy:            2.4.6
+Working dir:      /Users/acdstudpro/gitrepo/nyx-kassanjee-letter
+Git HEAD:         1e11bb260448e75a4c55f14dbf251917650ff979
+Git status:       DIRTY (uncommitted changes)
+
+Input files (path : mtime):
+  cdc_220_counties.csv  :  2026-05-21T07:41:21.837929
+  AIDSVu_County_NewDX_2013-20250726.xlsx  :  2026-05-21T07:19:41.945703
+  AIDSVu_County_NewDX_2014-20250726.xlsx  :  2026-05-21T07:19:44.763770
+  AIDSVu_County_NewDX_2015-20250726.xlsx  :  2026-05-21T07:19:46.778268
+  AIDSVu_County_NewDX_2016-20250726.xlsx  :  2026-05-21T07:19:49.092121
+  AIDSVu_County_NewDX_2017-20250726.xlsx  :  2026-05-21T07:19:50.709146
+  AIDSVu_County_NewDX_2018-20250726.xlsx  :  2026-05-21T07:19:52.623904
+  AIDSVu_County_NewDX_2019-20250726.xlsx  :  2026-05-21T07:19:57.162571
+  AIDSVu_County_NewDX_2020-20250726.xlsx  :  2026-05-21T07:19:58.834235
+  AIDSVu_County_NewDX_2021-20250726.xlsx  :  2026-05-21T07:20:01.079297
+  AIDSVu_County_NewDX_2022-20250726.xlsx  :  2026-05-21T07:20:03.510430
+  AIDSVu_County_NewDX_2023-20250726.xlsx  :  2026-05-21T07:20:05.710789
+  AIDSVu_County_SDOH_2023-20250726.xlsx  :  2026-05-11T22:57:08.779124
+  AIDSVu_State_LateDX_2023-20250726-2.xlsx  :  2026-05-21T07:27:25.693321
+  AIDSVu_State_NewDX_2008-20250726.xlsx  :  2026-05-21T07:26:44.373410
+  AIDSVu_State_NewDX_2009-20250726.xlsx  :  2026-05-21T07:26:45.034263
+  AIDSVu_State_NewDX_2010-20250726.xlsx  :  2026-05-21T07:26:46.115103
+  AIDSVu_State_NewDX_2011-20250726.xlsx  :  2026-05-21T07:26:47.154938
+  AIDSVu_State_NewDX_2012-20250726.xlsx  :  2026-05-21T07:26:48.121955
+  AIDSVu_State_NewDX_2013-20250726.xlsx  :  2026-05-21T07:26:49.605891
+  AIDSVu_State_NewDX_2014-20250726.xlsx  :  2026-05-21T07:26:51.809232
+  AIDSVu_State_NewDX_2015-20250726.xlsx  :  2026-05-21T07:26:54.512381
+  AIDSVu_State_NewDX_2016-20250726.xlsx  :  2026-05-21T07:26:56.874293
+  AIDSVu_State_NewDX_2017-20250726.xlsx  :  2026-05-21T07:26:59.027844
+  AIDSVu_State_NewDX_2018-20250726.xlsx  :  2026-05-21T07:27:00.683097
+  AIDSVu_State_NewDX_2019-20250726.xlsx  :  2026-05-21T07:27:05.278837
+  AIDSVu_State_NewDX_2020-20250726.xlsx  :  2026-05-21T07:27:07.041378
+  AIDSVu_State_NewDX_2021-20250726.xlsx  :  2026-05-21T07:27:09.592932
+  AIDSVu_State_NewDX_2022-20250726.xlsx  :  2026-05-21T07:27:12.022824
+  AIDSVu_State_NewDX_2023-20250726.xlsx  :  2026-05-21T07:27:18.739002

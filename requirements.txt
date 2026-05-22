@@ -1,6 +1,25 @@
-numpy>=1.24
-pandas>=2.0
-matplotlib>=3.7
-scipy>=1.10
-statsmodels>=0.14
-openpyxl>=3.1
+# Kassanjee v9 manuscript — reproduction environment
+#
+# Versions captured from runs/2026-05-21_202721/run_metadata.txt
+# (canonical run that produced every load-bearing statistic in the v9 manuscript).
+#
+# Reviewers may relax these pins if local dependency conflicts arise.
+# The analysis uses only stable APIs from each package:
+#   - pandas: read_excel, to_csv, basic DataFrame operations, ExcelWriter
+#   - numpy:  basic array ops, random.default_rng, percentile
+#   - scipy.stats: linregress, wilcoxon, pearsonr, ttest_1samp
+#   - statsmodels.tsa.stattools: acf
+#   - matplotlib: plot, savefig, basic axes/figure operations
+#   - openpyxl: xlsx engine for pandas
+#
+# Minor version drift within the compatibility ranges below is tolerated;
+# major version drift (e.g., pandas 4.x, numpy 3.x) may require code review.
+
+pandas~=3.0
+numpy~=2.4
+scipy>=1.11,<2.0
+matplotlib>=3.8,<4.0
+openpyxl>=3.1,<4.0
+statsmodels>=0.14,<1.0
+
+# Python: 3.12.10 (canonical). Tested also on 3.11.x. Not tested on <3.11.

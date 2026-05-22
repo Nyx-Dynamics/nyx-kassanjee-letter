@@ -1,0 +1,23 @@
+statistic,expected_value,tolerance,manuscript_section
+ar1_phi_msa_avg,0.0402,0.005,§4.6.1 — MSA-detrended AR(1)
+ar1_halflife_years,0.2157,0.01,§4.6.1 — AR(1) implied half-life
+testretest_r_total_dx,0.9992,0.001,§4.6.1 — test-retest r (total dx)
+testretest_r_idu_share,0.8884,0.005,§4.6.1 — test-retest r (IDU share)
+wilcoxon_n_msas,35,0,§4.6.2 — paired MSAs
+wilcoxon_median_delta,-14.8,0.1,§4.6.2 — pre/post-EHE median Δ (cases/yr)
+wilcoxon_p,0.0,0.001,§4.6.2 — Wilcoxon p-value
+state_n_units,52,0,§4.6.3 — states + DC + PR
+state_idu_slope_mean,0.1204,0.005,§4.6.3 — state IDU-share slope mean (pp/yr)
+state_idu_slope_p,0.4480,0.01,§4.6.3 — state IDU-share slope t-test p
+msa_n_units,35,0,§4.6.3 — EHE-priority MSAs
+msa_idu_slope_mean,-0.0508,0.005,§4.6.3 — MSA IDU-share slope mean (pp/yr)
+msa_idu_slope_p,0.4669,0.01,§4.6.3 — MSA IDU-share slope t-test p
+stratum_A_msa_idu_2014,656,0,§4.6.4 — Stratum A IDU dx 2014
+stratum_A_msa_idu_2023,636,0,§4.6.4 — Stratum A IDU dx 2023
+stratum_A_msa_idu_pct_change,-3.0488,0.05,§4.6.4 — Stratum A % change
+stratum_B_vuln_rural_idu_2014,46,0,§4.6.4 — Stratum B IDU dx 2014
+stratum_B_vuln_rural_idu_2023,46,0,§4.6.4 — Stratum B IDU dx 2023
+stratum_B_vuln_rural_idu_pct_change,0.0,0.01,§4.6.4 — Stratum B % change
+stratum_C_other_idu_2014,541,0,§4.6.4 — Stratum C IDU dx 2014
+stratum_C_other_idu_2023,641,0,§4.6.4 — Stratum C IDU dx 2023
+stratum_C_other_idu_pct_change,18.4843,0.05,§4.6.4 — Stratum C % change

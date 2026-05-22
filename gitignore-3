@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Backup files
+*.bak
+*_bak.py
+*~
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+
+# Runtime outputs from earlier (broken) pipeline conventions — kept out going forward.
+# Current canonical runs go to runs/<YYYY-MM-DD_HHMMSS>/ from build_xlxs.py.
+output_*/
+
+# Runtime working files
+section_4_6_recomputed.txt
+diagnostic_*.py
+
+# Note: runs/ directory is INCLUDED in version control intentionally — it
+# preserves timestamped canonical pipeline outputs for forensic comparison
+# between fix-cycle generations. To exclude all future runs, uncomment:
+# runs/

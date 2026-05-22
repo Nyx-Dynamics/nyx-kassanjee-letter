@@ -1,0 +1,221 @@
+state,fips,county,rank_vh2016
+Kentucky,21237,Wolfe,1
+West Virginia,54047,McDowell,2
+Kentucky,21025,Breathitt,3
+Kentucky,21193,Perry,4
+Kentucky,21051,Clay,5
+Kentucky,21013,Bell,6
+West Virginia,54059,Mingo,7
+Kentucky,21131,Leslie,8
+Kentucky,21121,Knox,9
+Kentucky,21071,Floyd,10
+Kentucky,21175,Morgan,11
+Kentucky,21115,Johnson,12
+Kentucky,21133,Letcher,13
+Kentucky,21195,Pike,14
+Kentucky,21063,Elliott,15
+Kentucky,21127,Lawrence,16
+West Virginia,54109,Wyoming,17
+Kentucky,21043,Carter,18
+Kentucky,21135,Lewis,19
+Kentucky,21129,Lee,20
+Kentucky,21189,Owsley,21
+Kentucky,21153,Magoffin,22
+Kentucky,21089,Greenup,23
+Kentucky,21119,Knott,24
+Kentucky,21065,Estill,25
+Kentucky,21235,Whitley,26
+West Virginia,54089,Summers,27
+West Virginia,54025,Greenbrier,28
+West Virginia,54071,Pocahontas,29
+West Virginia,54055,Mercer,30
+Kentucky,21001,Adair,31
+Kentucky,21199,Pulaski,32
+West Virginia,54043,Lincoln,33
+Kentucky,21125,Laurel,34
+West Virginia,54099,Wayne,35
+Tennessee,47129,Morgan,36
+Tennessee,47049,Fentress,37
+Tennessee,47137,Pickett,38
+Tennessee,47133,Overton,39
+West Virginia,54009,Boone,40
+Kentucky,21095,Harlan,41
+Tennessee,47087,Jackson,42
+Kentucky,21165,Menifee,43
+West Virginia,54101,Webster,44
+Kentucky,21109,Jackson,45
+Kentucky,21147,McCreary,46
+Tennessee,47175,Van Buren,47
+Tennessee,47095,Lake,48
+Kentucky,21171,Monroe,49
+Tennessee,47159,Smith,50
+Tennessee,47013,Campbell,51
+Tennessee,47049,Hancock,52
+Tennessee,47107,McMinn,53
+Indiana,18175,Washington,54
+Tennessee,47033,Crockett,55
+Tennessee,47185,White,56
+Kentucky,21031,Butler,57
+Ohio,39145,Scioto,58
+Tennessee,47139,Polk,59
+Kentucky,21185,Oldham,60
+Kentucky,21235,Whitley,61
+Kentucky,21205,Rowan,62
+Tennessee,47029,Cocke,63
+Tennessee,47075,Haywood,64
+Missouri,29229,Wright,65
+Tennessee,47105,Loudon,66
+West Virginia,54017,Doddridge,67
+Tennessee,47031,Coffee,68
+Tennessee,47009,Blount,69
+Indiana,18173,Warrick,70
+North Carolina,37173,Swain,71
+Tennessee,47153,Sequatchie,72
+Tennessee,47089,Jefferson,73
+Maine,23021,Piscataquis,74
+Tennessee,47171,Unicoi,75
+Tennessee,47011,Bradley,76
+Pennsylvania,42057,Fulton,77
+Tennessee,47025,Claiborne,78
+Tennessee,47155,Sevier,79
+Virginia,51027,Buchanan,80
+Tennessee,47073,Hawkins,81
+North Carolina,37121,Mitchell,82
+Tennessee,47125,Montgomery,83
+Tennessee,47169,Trousdale,84
+West Virginia,54033,Harrison,85
+Indiana,18137,Ripley,86
+Tennessee,47179,Washington,87
+Tennessee,47015,Cannon,88
+West Virginia,54077,Preston,89
+Tennessee,47087,Macon,90
+West Virginia,54107,Wood,91
+Maine,23029,Washington,92
+Tennessee,47119,Maury,93
+Tennessee,47165,Sumner,94
+West Virginia,54057,Mineral,95
+West Virginia,54091,Taylor,96
+North Carolina,37051,Cumberland,97
+Tennessee,47081,Hickman,98
+Indiana,18047,Franklin,99
+West Virginia,54065,Morgan,100
+North Carolina,37039,Cherokee,101
+Indiana,18103,Miami,102
+North Carolina,37161,Rutherford,103
+Tennessee,47131,Obion,104
+Tennessee,47083,Houston,105
+Pennsylvania,42105,Potter,106
+Tennessee,47045,Dyer,107
+Maine,23019,Penobscot,108
+Tennessee,47053,Gibson,109
+North Carolina,37183,Wake,110
+Indiana,18019,Clark,111
+Tennessee,47057,Grainger,112
+Pennsylvania,42083,McKean,113
+West Virginia,54083,Randolph,114
+North Carolina,37113,Macon,115
+Tennessee,47007,Bledsoe,116
+Tennessee,47091,Johnson,117
+Tennessee,47163,Sullivan,118
+West Virginia,54087,Roane,119
+West Virginia,54021,Gilmer,120
+West Virginia,54095,Tyler,121
+Tennessee,47109,McNairy,122
+West Virginia,54007,Braxton,123
+Indiana,18093,Lawrence,124
+Pennsylvania,42121,Venango,125
+North Carolina,37197,Yadkin,126
+Tennessee,47189,Wilson,127
+Maine,23025,Somerset,128
+West Virginia,54103,Wetzel,129
+West Virginia,54035,Jackson,130
+West Virginia,54093,Tucker,131
+West Virginia,54075,Pendleton,132
+North Carolina,37011,Avery,133
+Tennessee,47135,Perry,134
+Indiana,18133,Putnam,135
+Pennsylvania,42039,Crawford,136
+Tennessee,47147,Robertson,137
+West Virginia,54015,Clay,138
+Indiana,18039,Elkhart,139
+Tennessee,47077,Henderson,140
+Tennessee,47023,Chester,141
+Pennsylvania,42129,Westmoreland,142
+West Virginia,54029,Hancock,143
+North Carolina,37117,Martin,144
+North Carolina,37089,Henderson,145
+North Carolina,37087,Haywood,146
+Michigan,26021,Berrien,147
+West Virginia,54001,Barbour,148
+Tennessee,47065,Hamilton,149
+Pennsylvania,42007,Beaver,150
+West Virginia,54097,Upshur,151
+Indiana,18067,Howard,152
+Tennessee,47005,Benton,153
+West Virginia,54063,Monroe,154
+North Carolina,37123,Montgomery,155
+Pennsylvania,42071,Lancaster,156
+Pennsylvania,42013,Blair,157
+West Virginia,54005,Boone,158
+Pennsylvania,42087,Mifflin,159
+North Carolina,37075,Graham,160
+Pennsylvania,42031,Clarion,161
+Tennessee,47097,Lauderdale,162
+Pennsylvania,42115,Susquehanna,163
+North Carolina,37169,Stokes,164
+Pennsylvania,42037,Columbia,165
+North Carolina,37005,Alleghany,166
+North Carolina,37193,Wilkes,167
+Indiana,18075,Jay,168
+Pennsylvania,42049,Erie,169
+Indiana,18083,Knox,170
+Pennsylvania,42081,Lycoming,171
+Maine,23003,Aroostook,172
+Pennsylvania,42117,Tioga,173
+Tennessee,47021,Cheatham,174
+Indiana,18063,Hendricks,175
+North Carolina,37027,Caldwell,176
+North Carolina,37189,Watauga,177
+Pennsylvania,42021,Cambria,178
+North Carolina,37111,McDowell,179
+Indiana,18119,Owen,180
+North Carolina,37199,Yancey,181
+Tennessee,47149,Rutherford,182
+Pennsylvania,42035,Clinton,183
+North Carolina,37115,Madison,184
+North Carolina,37165,Scotland,185
+Pennsylvania,42107,Schuylkill,186
+Indiana,18073,Jasper,187
+Tennessee,47145,Roane,188
+West Virginia,54013,Calhoun,189
+North Carolina,37001,Alamance,190
+West Virginia,54105,Wirt,191
+Pennsylvania,42127,Wayne,192
+Pennsylvania,42061,Huntingdon,193
+North Carolina,37175,Transylvania,194
+Indiana,18105,Monroe,195
+Pennsylvania,42067,Juniata,196
+Tennessee,47061,Grundy,197
+Pennsylvania,42033,Clearfield,198
+Indiana,18025,Crawford,199
+Pennsylvania,42089,Monroe,200
+Pennsylvania,42135,Schuylkill,201
+North Carolina,37083,Halifax,202
+Indiana,18021,Clay,203
+Indiana,18079,Jennings,204
+Pennsylvania,42091,Montgomery,205
+Indiana,18135,Randolph,206
+North Carolina,37067,Forsyth,207
+Pennsylvania,42101,Philadelphia,208
+North Carolina,37029,Camden,209
+Pennsylvania,42043,Dauphin,210
+Pennsylvania,42095,Northampton,211
+Indiana,18055,Greene,212
+North Carolina,37081,Guilford,213
+West Virginia,54023,Grant,214
+Pennsylvania,42051,Fayette,215
+Tennessee,47095,Lake,216
+Oklahoma,40025,Cimarron,217
+Kansas,20153,Rawlins,218
+Vermont,50025,Windham,219
+Colorado,08025,Crowley,220

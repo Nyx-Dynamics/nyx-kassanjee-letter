@@ -1,0 +1,16 @@
+COVID counterfactual deficit decomposition (build_xlxs.py canonical aggregates)
+
+Stratum A (EHE-priority MSA core, n=55):
+  Pre-COVID slope: -5.89 cases/yr (p = 0.180, NS)
+  2020-2022 cumulative deficit: +89 IDU dx [95% CI -101, +197]
+  Relative to 2019 baseline: +14.2%
+
+Stratum B (CDC-220 vulnerable, outside EHE MSAs):
+  Pre-COVID slope: +13.60 cases/yr (p = 0.023)
+  2020-2022 cumulative deficit: +185 IDU dx [95% CI +74, +294]
+  Relative to 2019 baseline: +186.5%
+
+Stratum C (all other US counties):
+  Pre-COVID slope: +33.37 cases/yr (p = 0.036)
+  2020-2022 cumulative deficit: +361 IDU dx [95% CI +18, +528]
+  Relative to 2019 baseline: +48.4%

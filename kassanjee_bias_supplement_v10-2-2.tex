@@ -474,9 +474,9 @@ The policy-iteration Markov Decision Process described in the companion BMC Publ
 
 \subsection{Comparison with prior national-scale modeling of post-COVID HIV outcomes}
 
-The COVID-19 disruption window described in §4.6 motivates comparison with prior national-scale assessments of pandemic effects on U.S. HIV outcomes. Viguerie et al. [N1] used the HIV Optimization and Prevention Economics (HOPE) compartmental model to project pandemic-related changes in HIV incidence through 2024, finding a transient incidence decline of 4.4\% during 2020–2021 driven by reductions in transmission behavior, followed by a partial rebound of 2.0\% during 2022–2024 (an average of approximately 713 additional incident infections per year above the no-pandemic counterfactual). Their analysis is the principal published national-scale assessment of pandemic effects on U.S. HIV incidence and serves as an important reference framework. Our stratum-disaggregated surveillance findings are broadly consistent with the 2020–2021 incidence pattern they report and provide a longitudinal complement to their 2022–2024 projection.
-Several features of the surveillance data warrant consideration when interpreting the 2022–2024 projection. As described in Viguerie et al. (Table 1) [N1], the model's post-pandemic projection rests on the calibration choice that HIV testing rates, ART and PrEP initiation, and partner-count behavioral parameters return to 2019 baseline values in 2023. This is a reasonable simplifying assumption at the national-aggregate level, but our stratified longitudinal data suggest that the baseline-recovery assumption holds asymmetrically across the U.S. epidemic. In 2023, IDU-attributed diagnoses in CDC-220 vulnerable counties outside EHE-priority MSAs (Stratum B) reached only 30\% of the pre-COVID linear trajectory (46 observed vs. approximately 153 expected), and in other U.S. counties (Stratum C) reached 74\% (641 observed vs. approximately 866 expected). EHE-priority MSAs (Stratum A), by contrast, exceeded their pre-COVID trajectory in 2023 (636 vs. approximately 595 expected). This stratum-divergent recovery pattern is consistent with structural disruption that persisted beyond the acute pandemic window — including changes in Medicaid coverage beginning April 2023, harm-reduction service attrition in non-EHE jurisdictions, and continued public-health workforce capacity gaps — and that disproportionately affects populations outside EHE-priority MSAs.
-Three additional considerations are relevant for interpreting the 2022–2024 incidence projection. First, HIV outbreaks among people who inject drugs were documented during and after the acute COVID-19 disruption period, including in northeastern Massachusetts [N2,N3], West Virginia [N4], and other settings. Localized stochastic burst-incidence dynamics are difficult to represent in compartmental models that assume well-mixed populations within each stratification compartment. Second, methamphetamine use rose substantially during the pandemic, particularly among MSM [N5], and methamphetamine-associated HIV transmission risk is well-documented [N6]. Third, geospatial concentration of vulnerable populations — into homeless encampments, single-room-occupancy housing, and consolidated harm-reduction service catchments — increased effective network density in PWID communities during 2020–2023 [N7]. The behavioral and structural shifts captured in these observations are not directly represented in the 2020-calibrated input parameters propagated through compartmental dynamics to 2023–2024.
+The COVID-19 disruption window described in §4.6 motivates comparison with prior national-scale assessments of pandemic effects on U.S. HIV outcomes. Viguerie et al. \cite{viguerie2024} used the HIV Optimization and Prevention Economics (HOPE) compartmental model to project pandemic-related changes in HIV incidence through 2024, finding a transient incidence decline of 4.4\% during 2020–2021 driven by reductions in transmission behavior, followed by a partial rebound of 2.0\% during 2022–2024 (an average of approximately 713 additional incident infections per year above the no-pandemic counterfactual). Their analysis is the principal published national-scale assessment of pandemic effects on U.S. HIV incidence and serves as an important reference framework. Our stratum-disaggregated surveillance findings are broadly consistent with the 2020–2021 incidence pattern they report and provide a longitudinal complement to their 2022–2024 projection.
+Several features of the surveillance data warrant consideration when interpreting the 2022–2024 projection. As described in Viguerie et al. (Table 1) \cite{viguerie2024}, the model's post-pandemic projection rests on the calibration choice that HIV testing rates, ART and PrEP initiation, and partner-count behavioral parameters return to 2019 baseline values in 2023. This is a reasonable simplifying assumption at the national-aggregate level, but our stratified longitudinal data suggest that the baseline-recovery assumption holds asymmetrically across the U.S. epidemic. In 2023, IDU-attributed diagnoses in CDC-220 vulnerable counties outside EHE-priority MSAs (Stratum B) reached only 30\% of the pre-COVID linear trajectory (46 observed vs. approximately 153 expected), and in other U.S. counties (Stratum C) reached 74\% (641 observed vs. approximately 866 expected). EHE-priority MSAs (Stratum A), by contrast, exceeded their pre-COVID trajectory in 2023 (636 vs. approximately 595 expected). This stratum-divergent recovery pattern is consistent with structural disruption that persisted beyond the acute pandemic window — including changes in Medicaid coverage beginning April 2023, harm-reduction service attrition in non-EHE jurisdictions, and continued public-health workforce capacity gaps — and that disproportionately affects populations outside EHE-priority MSAs.
+Three additional considerations are relevant for interpreting the 2022–2024 incidence projection. First, HIV outbreaks among people who inject drugs were documented during and after the acute COVID-19 disruption period, including in northeastern Massachusetts \cite{alpren2020,cranston2019}, West Virginia \cite{hershow2022}, and other settings. Localized stochastic burst-incidence dynamics are difficult to represent in compartmental models that assume well-mixed populations within each stratification compartment. Second, methamphetamine use rose substantially during the pandemic, particularly among MSM \cite{carrico2020}, and methamphetamine-associated HIV transmission risk is well-documented \cite{cohen2022}. Third, geospatial concentration of vulnerable populations — into homeless encampments, single-room-occupancy housing, and consolidated harm-reduction service catchments — increased effective network density in PWID communities during 2020–2023 \cite{hassan2022}. The behavioral and structural shifts captured in these observations are not directly represented in the 2020-calibrated input parameters propagated through compartmental dynamics to 2023–2024.
 These observations are complementary rather than contradictory to Viguerie et al.'s analysis. National-scale compartmental projections and stratified longitudinal surveillance offer different windows onto the same disrupted epidemic, and read together they provide a more complete picture than either view alone. The methodological observation we draw from the comparison — that cross-sectional calibration inputs propagated forward through compartmental dynamics may incompletely capture stratum-specific structural disruption that continues past the calibration period — is consistent with the calibration-to-deployment framework that motivates the present manuscript and applies, in different mechanistic forms, to both biomarker-based and model-based incidence estimators.
 
 \subsubsection{Counterfactual methodology and stratum-level deficit derivation}\label{sec:covid_methodology}
@@ -540,19 +540,26 @@ All data-processing and analysis code is available at \url{https://github.com/Ny
 
 \begin{thebibliography}{99}
 \small
+
 \bibitem{gao2021} Gao F, Glidden DV, Hughes JP, Donnell DJ. Sample size calculation for active-arm trial with counterfactual incidence based on recency assay. \emph{Statistical Communications in Infectious Diseases}. 2021;13(1):20200009.
+
+\bibitem{viguerie2024} Viguerie A, Song R, Bates LM, et al. Modeling the impact of the COVID-19 pandemic on HIV diagnoses and incidence in the United States, 2020--2024. \textit{Sex Transm Dis}. 2024;51(11):734--742.
+
+\bibitem{alpren2020} Alpren C, Dawson EL, John B, et al. Opioid use fueling HIV transmission in an urban setting: an outbreak of HIV infection among people who inject drugs---Massachusetts, 2015--2018. \emph{Am J Public Health}. 2020;110(1):37--44.
+
+\bibitem{cranston2019} Cranston K, Alpren C, John B, et al. Notes from the field: HIV diagnoses among persons who inject drugs---northeastern Massachusetts, 2015--2018. \emph{MMWR Morb Mortal Wkly Rep}. 2019;68(10):253--254.
+
+\bibitem{hershow2022} Hershow RB, Wilson S, Bonacci RA, et al. Notes from the field: HIV outbreak during the COVID-19 pandemic among persons who inject drugs---Kanawha County, West Virginia, 2019--2021. \emph{MMWR Morb Mortal Wkly Rep}. 2022;71(2):66--68.
+
+\bibitem{carrico2020} Carrico AW, Horvath KJ, Grov C, et al. Double jeopardy: methamphetamine use and HIV as risk factors for COVID-19. \emph{AIDS Behav}. 2020;24(11):3020--3023.
+
+\bibitem{cohen2022} Cohen SE, Hassan A, Berry M, et al. Methamphetamine-associated HIV transmission among men who have sex with men: surveillance and prevention implications. \emph{Drug Alcohol Depend Rep}. 2022;5:100107.
+
+\bibitem{hassan2022} Hassan A, Blumenthal JS, Dube MP, et al. Effect of COVID-19 on PrEP persistence and HIV testing among PrEP users. \emph{J Subst Abuse Treat}. 2022;134:108593.
 
 \bibitem{bekker2024} Bekker L-G, Das M, Abdool Karim Q, et al. Twice-yearly lenacapavir or daily F/TAF for HIV prevention in cisgender women. \emph{N Engl J Med}. 2024;391(13):1179--1192.
 
 \bibitem{kelley2025} Kelley CF, Acevedo-Quinones M, Agwu AL, et al. Twice-yearly lenacapavir for HIV prevention in men and gender-diverse persons. \emph{N Engl J Med}. 2025;392(14):1261--1276.
-
-\bibitem{mills2025opera} Mills AM, Brunet L, Frost KR, et al. Cabotegravir long-acting for pre-exposure prophylaxis (PrEP): real world data on on-time dosing, HIV testing and HIV acquisition from the OPERA cohort. \emph{Open Forum Infect Dis}. 2025;12(Suppl 1):ofae631.160. doi:10.1093/ofid/ofae631.160.
-
-\bibitem{psaros2024hptn083} Psaros C, Goodman GR, Lee JS, et al. HPTN 083-02: factors influencing adherence to injectable PrEP and retention in an injectable PrEP study. \emph{J Int AIDS Soc}. 2024;27(5):e26252. doi:10.1002/jia2.26252.
-
-\bibitem{nhbs2023} Centers for Disease Control and Prevention. HIV infection, risk, prevention, and testing behaviors among persons who inject drugs---National HIV Behavioral Surveillance. 2023.
-
-\bibitem{bjs2023} Bureau of Justice Statistics. Prisoners in 2022---Statistical Tables. US Department of Justice. 2023.
 
 \bibitem{vanhandel2016} Van Handel MM, Rose CE, Hallisey EJ, et al. County-level vulnerability assessment for rapid dissemination of HIV or HCV infections among persons who inject drugs, United States. \emph{J Acquir Immune Defic Syndr}. 2016;73(3):323--331.
 
@@ -560,8 +567,16 @@ All data-processing and analysis code is available at \url{https://github.com/Ny
 
 \bibitem{demidont_barriers_synergy} Demidont AC. Structural Barriers, Stochastic Avoidance, and Outbreak Risk in HIV Prevention for People Who Inject Drugs. \emph{Preprints}. January 2026. doi:10.20944/preprints202601.0948.v1. Under peer review at \emph{BMC Public Health}.
 
-\bibitem{viguerie2024} Viguerie A, Song R, Bates LM, et al. Modeling the impact of the COVID-19 pandemic on HIV diagnoses and incidence in the United States, 2020--2024. \textit{Sex Transm Dis}. 2024;51(11):734--742.
+\bibitem{nhbs2023} Centers for Disease Control and Prevention. HIV infection, risk, prevention, and testing behaviors among persons who inject drugs---National HIV Behavioral Surveillance. 2023.
 
-\bibitem{dinenno2022} DiNenno EA, Delaney KP, Pitasi MA, et al. HIV testing before and during the COVID-19 pandemic---United States, 2019--2020. \textit{MMWR Morb Mortal Wkly Rep}. 2022;71(25):820--824.\end{thebibliography}
+\bibitem{bjs2023} Bureau of Justice Statistics. Prisoners in 2022---Statistical Tables. US Department of Justice. 2023.
+
+\bibitem{dinenno2022} DiNenno EA, Delaney KP, Pitasi MA, et al. HIV testing before and during the COVID-19 pandemic---United States, 2019--2020. \textit{MMWR Morb Mortal Wkly Rep}. 2022;71(25):820--824.
+
+\bibitem{mills2025opera} Mills AM, Brunet L, Frost KR, et al. Cabotegravir long-acting for pre-exposure prophylaxis (PrEP): real world data on on-time dosing, HIV testing and HIV acquisition from the OPERA cohort. \emph{Open Forum Infect Dis}. 2025;12(Suppl 1):ofae631.160. doi:10.1093/ofid/ofae631.160.
+
+\bibitem{psaros2024hptn083} Psaros C, Goodman GR, Lee JS, et al. HPTN 083-02: factors influencing adherence to injectable PrEP and retention in an injectable PrEP study. \emph{J Int AIDS Soc}. 2024;27(5):e26252. doi:10.1002/jia2.26252.
+
+\end{thebibliography}
 
 \end{document}
